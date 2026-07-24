@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>峰岚佳韵 · 抖音短视频带货 2V1 陪跑</title>
+  <!-- ╔══════════════════════════════════════════════════════════════╗
+       ║  【模块 · 头部元数据 HEAD META】                              ║
+       ║  管三件事：① 浏览器标签页小图标  ② 安装到桌/手机的图标         ║
+       ║            ③ 分享到微信/X/Telegram 时显示的卡片（标题+描述+封面）║
+       ║  改分享标题/描述 → 改下面 og:title / og:description            ║
+       ║  改封面图 → 换 og-cover.png（必须是 1200×630 的 PNG/JPG）       ║
+       ║  上线后 → 把两处 "https://你的域名/" 换成真实网址               ║
+       ╚══════════════════════════════════════════════════════════════╝ -->
+  <meta name="theme-color" content="#FF6B35" />
+  <meta name="description" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 专属陪跑，两个人盯你一个人，从 0 跑到出单。正在接受新一期学员。" />
+
+  <!-- ① 标签页小图标：现代浏览器吃 SVG，保留 -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+
+  <!-- ② 安装图标：iOS 只认 PNG，且要 180×180（SVG 在这里无效，这就是灰底峰字的元凶） -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <!-- ② 安装图标登记表（Android / 桌面 PWA 读它） -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- ③ 分享卡片：Open Graph（微信 / X / Facebook / Telegram / iMessage 链接预览读这套） -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="峰岚佳韵" />
+  <meta property="og:title" content="90 天，盯到你出单。" />
+  <meta property="og:description" content="峰岚佳韵 · 抖音短视频带货 2V1 陪跑，不再一个人摸索。正在接受新一期学员。" />
+  <meta property="og:url" content="https://fljytrain.cn/" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:image" content="og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 陪跑" />
+
+  <!-- ③ 分享卡片：Twitter / X 专用（不写就退化成无图小卡片） -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="90 天，盯到你出单。" />
+  <meta name="twitter:description" content="峰岚佳韵 · 抖音短视频带货 2V1 陪跑，不再一个人摸索。" />
+  <meta name="twitter:image" content="og-cover.png" />
+  <meta name="twitter:image:alt" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 陪跑" />
+
+  <!-- 去重 + SEO：告诉搜索引擎/爬虫这页的"正本"网址 -->
+  <link rel="canonical" href="https://fljytrain.cn/" />
+
+  <!-- 字体：Sora(标题) + Noto Sans SC(正文) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 0 · 顶部导航 NAV】                                    ║
+     ║  悬浮胶囊：左 logo / 中 当前章节号 / 右 状态+预约+汉堡        ║
+     ║  改 logo  → 换下面两个 <img> 的 src                           ║
+     ║  改席位文案 → 搜 "招生中"                                     ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<header class="nav" id="nav" aria-label="主导航">
+  <!-- 顶部阅读进度条 -->
+  <div class="nav-progress" aria-hidden="true"><span id="navProgressBar"></span></div>
+
+  <div class="nav-island" id="navIsland">
+    <!-- 左：logo（明暗两套自动切换） -->
+    <a class="nav-brand" href="#hero" aria-label="峰岚佳韵 首页">
+      <img class="nav-logo nav-logo--color" src="logo-color.svg" alt="峰岚佳韵" />
+      <img class="nav-logo nav-logo--white" src="logo-white.svg" alt="" aria-hidden="true" />
+    </a>
+
+    <!-- 中：当前章节指示（滚动自动更新，点击开目录） -->
+    <button class="nav-chapter" id="navChapter" aria-label="打开章节目录">
+      <span class="nav-chapter-num" id="navChapterNum">00</span>
+      <span class="nav-chapter-txt" id="navChapterTxt">峰岚佳韵</span>
+      <svg class="nav-chapter-arr" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <!-- 右：状态药丸 + 预约按钮 + 汉堡 -->
+    <div class="nav-right">
+      <span class="nav-status" title="本期招生状态">
+        <i class="nav-dot" aria-hidden="true"></i>
+        <span class="nav-status-txt">招生中 · 剩 <b id="navSeats">7</b> 席</span>
+      </span>
+      <a class="nav-cta" href="#join">
+        <span>预约席位</span>
+        <svg class="nav-cta-arr" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="打开章节目录" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- 【模块 0 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 0.5 · 章节目录抽屉 DRAWER】（点汉堡后滑出）           ║
+     ║  改章节 → 改下面 8 个 <a> 的文字与 href（href 要对应各模块 id）║
+     ║  注意：抽屉里的预约按钮用 .drawer-cta，别和胶囊的 .nav-cta 混  ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<!-- 暗纱：点它关闭抽屉 -->
+<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
+
+<div class="nav-drawer" id="navDrawer" inert aria-hidden="true">
+  <!-- 抽屉头：logo + 关闭叉 -->
+  <div class="nav-drawer-head">
+    <img class="nav-drawer-logo" src="logo-white.svg" alt="峰岚佳韵" />
+    <button class="nav-drawer-close" id="navDrawerClose" aria-label="关闭目录"><span></span><span></span></button>
+  </div>
+
+  <!-- 抽屉中：8 个章节链接 -->
+  <nav class="nav-drawer-list" aria-label="章节目录">
+    <a href="#pain"><span class="dl-num">01</span><span class="dl-txt">你是不是也卡在这里</span><span class="dl-now">正在读</span><span class="dl-arr">↗</span></a>
+    <a href="#run"><span class="dl-num">02</span><span class="dl-txt">2V1 陪跑 · 90 天</span><span class="dl-now">正在读</span><span class="dl-arr">↗</span></a>
+    <a href="#result"><span class="dl-num">03</span><span class="dl-txt">跑出来的人长这样</span><span class="dl-now">正在读</span><span class="dl-arr">↗</span></a>
+    <a href="#join"><span class="dl-num">04</span><span class="dl-txt">预约我的席位</span><span class="dl-now">正在读</span><span class="dl-arr">↗</span></a>
+  </nav>
+
+  <!-- 抽屉底：席位 + 全宽预约（手机上也必须显示） -->
+  <div class="nav-drawer-foot">
+    <span class="nav-status on-dark">
+      <i class="nav-dot"></i>
+      <span>招生中 · 剩 <b id="drawerSeats">7</b> 席</span>
+    </span>
+    <a class="drawer-cta" href="#join">预约我的席位 →</a>
+  </div>
+</div>
+<!-- 【模块 0.5 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 1 · 首屏 HERO】 v4 —— 极简左：仅标题+按钮              ║
+     ║  左：hero-title + hero-cta（其余文案已移除）                    ║
+     ║  右：手机"陪跑实录"不变                                         ║
+     ║  背景：斜切暗角 + 手机聚光 + 极淡颗粒                           ║
+     ║  底：单行跑马灯 + 滑动提示                                      ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<section class="hero" id="hero" data-theme="dark">
+  <!-- ★ 钉屏舞台：sticky 钉在视口，overflow 裁切在这里做（不能放 .hero 上） -->
+  <div class="hero-stage">
+    <!-- 视差背景层：整层比内容慢、且向深处退 -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-slash"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-grain"></div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 class="hero-hello">Hello<span class="hello-bang">！</span></h1>
+        <svg class="hello-wave" viewBox="0 0 240 26" fill="none" aria-hidden="true">
+          <path class="wave-line" d="M6,14 C30,3 50,3 74,14 C98,25 118,25 142,14 C166,3 186,3 210,14"
+                stroke="#FFD0A4" stroke-width="8" stroke-linecap="round">
+            <animate attributeName="d" dur="3.4s" repeatCount="indefinite" calcMode="spline"
+                     keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                     values="M6,14 C30,3 50,3 74,14 C98,25 118,25 142,14 C166,3 186,3 210,14;
+                             M6,14 C30,25 50,25 74,14 C98,3 118,3 142,14 C166,25 186,25 210,14;
+                             M6,14 C30,3 50,3 74,14 C98,25 118,25 142,14 C166,3 186,3 210,14"/>
+          </path>
+        </svg>
+        <p class="hero-welcome">欢迎来到<span class="hw-brand">峰岚佳韵</span></p>
+        <a class="hero-invite" href="#pain">
+          <span>里面给你备了点东西，慢慢看</span>
+          <span class="invite-arr">↓</span>
+        </a>
+      </div>
+
+      <div class="hero-host" aria-hidden="true">
+        <span class="host-glow"></span>
+        <span class="host-particle p-star"></span>
+        <span class="host-particle p-dot"></span>
+        <span class="host-particle p-ring"></span>
+        <svg class="host-face" viewBox="0 0 220 200" fill="none">
+          <circle class="face-line" cx="100" cy="106" r="64" stroke="#FFF3EA" stroke-width="4"/>
+          <path class="face-line" d="M100,42 Q90,26 102,16 Q110,26 100,42" stroke="#FFF3EA" stroke-width="4" stroke-linecap="round"/>
+          <g class="eye-open">
+            <path d="M72,96 Q82,83 92,96" stroke="#FFF3EA" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M108,96 Q118,83 128,96" stroke="#FFF3EA" stroke-width="4.5" stroke-linecap="round"/>
+          </g>
+          <g class="eye-closed">
+            <path d="M72,94 Q82,97 92,94" stroke="#FFF3EA" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M108,94 Q118,97 128,94" stroke="#FFF3EA" stroke-width="4.5" stroke-linecap="round"/>
+          </g>
+          <circle class="host-blush" cx="70" cy="116" r="8" fill="#FFB088"/>
+          <circle class="host-blush" cx="130" cy="116" r="8" fill="#FFB088"/>
+          <path class="face-line" d="M80,122 Q100,144 120,122" stroke="#FFF3EA" stroke-width="4.5" stroke-linecap="round"/>
+          <g class="wave-hand">
+            <path class="face-line" d="M162,94 C156,82 162,70 174,70 C186,70 190,84 184,94 C180,100 166,100 162,94 Z" stroke="#FFF3EA" stroke-width="4" stroke-linejoin="round"/>
+            <path class="face-line" d="M170,70 L168,57" stroke="#FFF3EA" stroke-width="4" stroke-linecap="round"/>
+            <path class="face-line" d="M177,69 L178,55" stroke="#FFF3EA" stroke-width="4" stroke-linecap="round"/>
+            <path class="face-line" d="M184,72 L189,61" stroke="#FFF3EA" stroke-width="4" stroke-linecap="round"/>
+            <path class="face-line" d="M162,86 L153,83" stroke="#FFF3EA" stroke-width="4" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <span class="foot-line" aria-hidden="true"></span>
+      <div class="hero-foot-row wrap">
+        <span class="foot-brand">
+          <i class="foot-dot"></i>招生中 · 剩 <b>7</b> 席
+          <span class="foot-sep">/</span>
+          <span class="foot-tag">峰岚佳韵 · 90 天陪跑实录</span>
+        </span>
+        <a class="foot-next" href="#pain">你是不是也卡在这<span class="foot-arr">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 【模块 1 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 2 · 痛点 PAIN】  浅色底 · 大号描边编号清单             ║
+     ║  改条目 → 增删 .pain-item；改序号 → 改 .num                   ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<section class="sec pain" id="pain" data-theme="light">
+  <div class="wrap">
+    <p class="kicker reveal">01 — 你是不是也卡在这里</p>
+    <h2 class="sec-title reveal">做带货，<em>难的不是努力</em>，<br>是没人告诉你下一步往哪走。</h2>
+    <ul class="pain-list">
+      <li class="pain-item reveal">
+        <span class="num">01</span>
+        <div>
+          <h3>拍了没人看</h3>
+          <p>选题靠猜、节奏靠感觉，发出去播放量停在三位数，不知道问题出在哪一帧。</p>
+        </div>
+      </li>
+      <li class="pain-item reveal">
+        <span class="num">02</span>
+        <div>
+          <h3>有人看不变现</h3>
+          <p>流量来了接不住，话术不会埋钩子，橱窗挂上去却没人点，热闹是别人的。</p>
+        </div>
+      </li>
+      <li class="pain-item reveal">
+        <span class="num">03</span>
+        <div>
+          <h3>一个人扛所有</h3>
+          <p>脚本、拍摄、剪辑、投流全靠自己摸，卡住了没人问，热情在反复试错里耗光。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- 【模块 2 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 3 · 陪跑流程 RUN】  深色底 · 90 天竖向时间轴           ║
+     ║  改阶段 → 增删 .tl-item；改天数 → 改 .tl-when                 ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<section class="sec run" id="run" data-theme="dark">
+  <div class="wrap">
+    <p class="kicker reveal">02 — 2V1 专属陪跑 · 90 天</p>
+    <h2 class="sec-title light reveal">不是丢给你一套课，<br>是<em>两个人盯你一个人</em>，跑到出单为止。</h2>
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <span class="tl-when">第 1–15 天</span>
+        <h3>定位 & 起号</h3>
+        <p>拆解你的优势赛道，定人设、定选题库，搭好账号骨架，第一条视频就踩在对的轨道上。</p>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-when">第 16–45 天</span>
+        <h3>内容 & 节奏</h3>
+        <p>逐条复盘你的成片，改钩子、改节奏、改结尾，把"完播—互动—转化"三个指标一项项抠出来。</p>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-when">第 46–75 天</span>
+        <h3>变现 & 投流</h3>
+        <p>话术埋点、橱窗排品、小额投流测款，让流量第一次真正变成订单，跑通最小盈利模型。</p>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-when">第 76–90 天</span>
+        <h3>放量 & 交接</h3>
+        <p>把验证过的爆款结构沉淀成你的 SOP，离开陪跑也能自己复制、自己放大，不再依赖任何人。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+<!-- 【模块 3 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 4 · 成果数字墙 RESULT】  浅底 · 4 个大数字 + 一句证言  ║
+     ║  改数字 → 改 data-to / data-suffix；计数动画自动跑            ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<section class="sec result" id="result" data-theme="light">
+  <div class="wrap">
+    <p class="kicker reveal">03 — 跑出来的人，长这样</p>
+    <h2 class="sec-title reveal">数字不说谎，<em>但它们背后是一个个不再熬夜猜的你。</em></h2>
+    <div class="stats">
+      <div class="stat reveal">
+        <span class="stat-num" data-to="90" data-suffix="天">0</span>
+        <span class="stat-label">平均从 0 到首单</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-num" data-to="2" data-suffix="V1">0</span>
+        <span class="stat-label">导师贴身配比</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-num" data-to="312" data-suffix="+">0</span>
+        <span class="stat-label">已陪跑学员</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat-num" data-to="87" data-suffix="%">0</span>
+        <span class="stat-label">90 天内出单率</span>
+      </div>
+    </div>
+    <blockquote class="quote reveal">
+      “以前我对着数据发呆一整晚，现在有人比我更早发现问题。<br>90 天的陪跑不是终点，而是起点。”
+      <cite>— 第三期学员 · 家居赛道</cite>
+    </blockquote>
+  </div>
+</section>
+<!-- 【模块 4 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 5 · 报名 JOIN】  橙色整屏 · 左表单 + 右活卡片          ║
+     ║  改卡片席位 → 改 #seatsLeft；表单为前端演示，无后端            ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<section class="sec join" id="join" data-theme="orange">
+  <div class="wrap join-grid">
+    <div class="join-copy reveal">
+      <span class="live-dot" aria-hidden="true"></span>
+      <p class="kicker on-orange">正在接受新一期学员</p>
+      <h2 class="sec-title on-orange">从这里开始，<br>你不再是一个人摸索。</h2>
+      <p class="join-lead">每期名额有限，2V1 决定了我们带不了太多人。<br>留下联系方式，48 小时内导师亲自和你聊一次，合适再开始。</p>
+      <form class="join-form" id="joinForm" novalidate>
+        <input type="text" name="name" placeholder="怎么称呼你" required />
+        <input type="tel" name="phone" placeholder="手机号 / 微信" required />
+        <button type="submit" class="btn-solid">预约我的席位 →</button>
+      </form>
+      <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+    </div>
+    <div class="join-card reveal" aria-hidden="true">
+      <span class="card-tag">本期开放</span>
+      <span class="card-seats"><b id="seatsLeft">7</b> / 12 席</span>
+      <span class="card-line">抖音短视频带货 · 2V1 陪跑</span>
+      <span class="card-line dim">90 天 · 全程盯到出单</span>
+    </div>
+  </div>
+</section>
+<!-- 【模块 5 结束】 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  【模块 6 · 页脚 FOOT】  深色 · logo + 版权（年份自动填）       ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+<footer class="foot" data-theme="dark">
+  <div class="wrap foot-inner">
+    <img class="foot-logo" src="logo-white.svg" alt="峰岚佳韵" />
+    <p>© <span id="year"></span> 峰岚佳韵 · 让每一次开播都有人陪你复盘</p>
+  </div>
+</footer>
+<!-- 【模块 6 结束】 -->
+
+<script src="script.js"></script>
+</body>
+</html>
