@@ -371,3 +371,53 @@
   if (loopTrack) loopTrack.innerHTML += loopTrack.innerHTML;
 
 })();
+
+/* ── 首屏入场安全网：load 后若关键内容仍隐藏，判定 animation 没跑，强制点亮 ── */
+(function () {
+  var hero = document.querySelector('.hero');
+  var sub = document.querySelector('.hero-subtitle');
+  if (!hero || !sub) return;
+  function check() {
+    // 副标题动画正常跑完 opacity 应为 1；仍 < .5 说明被钉在隐藏帧
+    if (parseFloat(getComputedStyle(sub).opacity) < 0.5) hero.classList.add('hero-fallback');
+  }
+  window.addEventListener('load', function () { setTimeout(check, 1300); });
+  setTimeout(check, 2600); // 慢设备再补一刀
+})();
+
+/* ── hero 底栏"了解更多"点击兜底：滚到引言（sticky hero 下统一用 JS 滚） ── */
+(function () {
+  var btn = document.querySelector('.foot-next');
+  var target = document.querySelector('#bridge') || document.querySelector('#pain');
+  if (!btn || !target) return;
+  btn.style.cursor = 'pointer';
+  btn.addEventListener('click', function () {
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+})();
+
+/* ── 导航 / 抽屉"联系咨询"= 复制微信号（与底部 CTA 行为统一） ── */
+(function () {
+  function copyWx(btn) {
+    var id = btn.getAttribute('data-wx') || '';
+    var label = btn.querySelector('span') || btn;     /* nav-cta 取内层 span，drawer-cta 取自身 */
+    var hold = label.textContent;
+    function done() {
+      btn.classList.add('copied');
+      label.textContent = '已复制 ✓ 去微信搜我';
+      setTimeout(function () { label.textContent = hold; btn.classList.remove('copied'); }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(id).then(done, done);
+    else {
+      var ta = document.createElement('textarea');
+      ta.value = id; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done();
+    }
+  }
+  ['navWx', 'drawerWx'].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (b) b.addEventListener('click', function () { copyWx(b); });
+  });
+})();

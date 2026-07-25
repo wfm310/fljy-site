@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <!-- viewport-fit=cover：配合 iOS 刘海/圆角安全区 env(safe-area-inset-*) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>90天抖音带货陪跑 · 从0到1 | 诚实比承诺更重要</title>
-<meta name="description" content="90天一对一陪跑，从定位、选品、内容到投放，带你跑通抖音短视频带货全流程。每月仅30人，¥1980/90天。不承诺暴富，只承诺清醒。">
-<!-- 微信分享卡片 -->
-<meta property="og:title" content="90天抖音带货陪跑 · 从0到1">
-<meta property="og:description" content="不承诺月入过万，只承诺90天后你有一套完整的带货SOP。每月仅30人，招满即停。">
-<meta property="og:image" content="share-cover.jpg">
-<meta property="og:type" content="website">
+  <!-- ══ 标签页标题 + 搜索摘要 ══════════════════════════════════
+       • 标签页/百度搜索的「蓝色标题」= 下面 <title>
+       • 百度搜索标题下的「灰色摘要」= 下面 name="description"（只留一处！）
+       • 改搜索文案 → 只动这两行；带"抖音带货陪跑"是为了被人搜到        ══ -->
+  <title>抖音带货陪跑｜90天2V1盯到出单，适合一个人摸索没结果的普通人</title>
+  <meta name="description" content="做了几个月带货还没出单？峰岚佳韵90天2V1陪跑，从定位、选品、内容到投放，带你跑通抖音短视频带货全流程。每月仅30人，¥1980，不承诺暴富，只承诺清醒。" />
+
 
   <!-- ╔══════════════════════════════════════════════════════════════╗
        ║  HEAD 元数据：① 标签页/安装图标  ② 微信/X/Telegram 分享卡片   ║
@@ -22,7 +22,7 @@
   <meta name="color-scheme" content="light" />
   <!-- 防 iOS 把"90 天 / 30 分钟 / 剩 7 席"里的数字误识别成电话 -->
   <meta name="format-detection" content="telephone=no, address=no, email=no" />
-  <meta name="description" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 专属陪跑，两个人盯你一个人，从 0 跑到出单。正在接受新一期学员。" />
+  <meta name="description" content="90天二对一陪跑，从定位、选品、内容到投放，带你跑通抖音短视频带货全流程。每月仅30人，¥1980/90天。不承诺暴富，只承诺清醒。" />
 
   <!-- ① 标签页小图标 -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -38,7 +38,7 @@
   <meta property="og:description" content="峰岚佳韵 · 抖音短视频带货 2V1 陪跑，不再一个人摸索。正在接受新一期学员。" />
   <meta property="og:url" content="https://fljytrain.cn/" />
   <meta property="og:locale" content="zh_CN" />
-  <meta property="og:image" content="og-cover.png" />
+  <meta property="og:image" content="https://fljytrain.cn/og-cover.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 陪跑" />
@@ -46,7 +46,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="90 天，盯到你出单。" />
   <meta name="twitter:description" content="峰岚佳韵 · 抖音短视频带货 2V1 陪跑，不再一个人摸索。" />
-  <meta name="twitter:image" content="og-cover.png" />
+  <meta name="twitter:image" content="https://fljytrain.cn/og-cover.png" />
   <meta name="twitter:image:alt" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 陪跑" />
 
   <link rel="canonical" href="https://fljytrain.cn/" />
@@ -54,7 +54,9 @@
   <!-- 字体：Sora(拉丁标题) + Noto Sans SC(中文/正文) -->
   <link rel="preconnect" href="https://fonts.loli.net" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.loli.net" crossorigin />
+  <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -91,12 +93,13 @@
         <i class="nav-dot" aria-hidden="true"></i>
         <span class="nav-status-txt">招生中 · 剩 <b class="seats">7</b> 席</span>
       </span>
-      <a class="nav-cta" href="https://work.weixin.qq.com/" target="_blank" rel="noopener">
-        <span>联系咨询</span>
+      <button class="nav-cta" id="navWx" type="button" data-wx="JyDdhrj" aria-label="复制微信号 JyDdhrj">
+        <span>找我聊两句</span>
         <svg class="nav-cta-arr" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </a>
+      </button>
+
       <button class="nav-burger" id="navBurger" aria-label="打开章节目录" aria-expanded="false" aria-controls="navDrawer">
         <span></span><span></span>
       </button>
@@ -137,7 +140,7 @@
       <i class="nav-dot" aria-hidden="true"></i>
       <span>招生中 · 剩 <b class="seats">7</b> 席</span>
     </span>
-    <a class="drawer-cta" href="https://work.weixin.qq.com/" target="_blank" rel="noopener">联系咨询 →</a>
+    <button class="drawer-cta" id="drawerWx" type="button" data-wx="JyDdhrj">复制微信号 联系咨询 →</button>
   </div>
 </div>
 
@@ -205,12 +208,13 @@
             <span class="foot-sep" aria-hidden="true">/</span>
             <span class="foot-tag">峰岚佳韵 · 90 天陪跑实录</span>
           </span>
-          <a class="foot-next" role="button" aria-label="了解更多">
+                    <a class="foot-next" role="button" aria-label="了解更多">
             了解更多
             <span class="foot-arr" aria-hidden="true">↓</span>
           </a>
-        </div>
-      </div>
+        </div>   <!-- 关 hero-foot-row -->
+      </div>     <!-- 关 hero-foot -->
+  </div>         <!-- ★ 新增：关 hero-inner-content（之前漏了它） -->
 </section>
 
 <!-- ╔══════════════════════════════════════════════════════════════╗
@@ -470,7 +474,7 @@
 
       <p class="pclose-l2 rv" style="--d:.15s">这就是我陪你 <span class="pseal">90 天</span> 要做的事。</p>
       <!-- 02 模块上线后，把 href 换成对应 id -->
-      <a class="pnext rv" style="--d:.25s" href=""#skill">下一站 · 02 你能学到什么 <span aria-hidden="true">↓</span></a>
+      <a class="pnext rv" style="--d:.25s" href="#skill">下一站 · 02 你能学到什么 <span aria-hidden="true">↓</span></a>
     </section>
 
   </div>
@@ -620,7 +624,7 @@
             <span class="sstamp" aria-hidden="true">✓</span>
             <span class="stag"><b>STEP 05</b> · 全域投放 · 随心推 / 千川</span>
             <h3>什么阶段，做什么动作</h3>
-            <div class="spoint"><span class="spoint-num">❽</span><div class="spoint-body"><b>全域打品实操</b><span>随心推 + 千川，打品投放五个阶段，每一步都有标准动作。</span></div></div>
+            <div class="spoint"><span class="spoint-num">❼</span><div class="spoint-body"><b>全域打品实操</b><span>随心推 + 千川，打品投放五个阶段，每一步都有标准动作。</span></div></div>
             <div class="sflow" role="list" aria-label="打品投放五阶段">
               <span class="sflow-item" role="listitem" style="--d:.4s"><i>①</i><b>冷启动</b><span>小预算 · 多素材试跑</span></span><span class="sflow-arr" aria-hidden="true">→</span>
               <span class="sflow-item" role="listitem" style="--d:.5s"><i>②</i><b>建模期</b><span>管住手 · 让系统学</span></span><span class="sflow-arr" aria-hidden="true">→</span>
@@ -644,7 +648,7 @@
             <span class="sstamp" aria-hidden="true">✓</span>
             <span class="stag"><b>STEP 06</b> · 数据复盘 · 内容 + 投放</span>
             <h3>每个数字，都指向一个动作</h3>
-            <div class="spoint"><span class="spoint-num">❼</span><div class="spoint-body"><b>数据归因能力</b><span>三个问题，三套归因路径。</span></div></div>
+            <div class="spoint"><span class="spoint-num">❽</span><div class="spoint-body"><b>数据归因能力</b><span>三个问题，三套归因路径。</span></div></div>
             <div class="sattrib" aria-label="数据归因三问">
               <div class="sattrib-row"><b>播放低</b><i aria-hidden="true">→</i><span>内容还是标签？</span></div>
               <div class="sattrib-row"><b>转化低</b><i aria-hidden="true">→</i><span>产品还是话术？</span></div>
@@ -1048,6 +1052,7 @@
     </div>
 
     <p class="fit-close rv" style="--d:.2s">如果上面说的就是你——<b>欢迎登机</b>。</p>
+    <a class="fnext rv" style="--d:.3s" href="#nofit">下一站 · 06 什么样的人不适合 <span aria-hidden="true">↓</span></a>
   </div>
 </section>
 
@@ -1092,7 +1097,7 @@
       </article>
       <article class="ncard rv" style="--d:.15s">
         <span class="ncard-x" aria-hidden="true">✕</span>
-        <h4>连每天 30 分钟都抽不出来的</h4>
+        <h4>连每天 1–2 小时都抽不出来的</h4>
         <p>做带货账号需要持续投入时间，如果你连每天看数据、写脚本的时间都没有，建议等有空了再来。</p>
       </article>
       <article class="ncard rv" style="--d:.18s">
@@ -1153,7 +1158,7 @@
     <header class="rm-head">
       <p class="rm-kicker rv"><span class="rm-kicker-tick" aria-hidden="true"></span>模块 07 · 陪跑流程</p>
       <h2 class="rm-title rv" style="--d:.1s">我的<em class="rm-em">90天</em>陪跑流程</h2>
-      <p class="rm-thesis rv" style="--d:.22s">三个阶段，从规划到验证到放大，<b>一步一个脚印</b>。</p>
+      <p class="rm-thesis rv" style="--d:.22s">四个阶段，从规划到验证到放大，<b>一步一个脚印</b>。</p>
     </header>
 
     <!-- ② 入学流水线 -->

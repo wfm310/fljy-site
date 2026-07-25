@@ -7,7 +7,34 @@
    ④ 980 断点 .hero-grid 同步去掉 padding-top/bottom
    ⑤ 600 断点删除 .hero 的 padding-top（它会把 sticky 顶下去、把底栏挤出屏） */
 /* ---- 滚动条：滑出显示、静止透明 ---- */
-:focus-visible { outline: none; }
+/* ── 焦点环：键盘 Tab 时的可见指示（替换原来的 outline:none） ──
+   纸白底模块 + 导航常态 → 橙环；墨黑底模块 → 白环；橙底 hero → 墨环。
+   唯一已知妥协：导航 ghost 态用白环，停在橙 hero 上时对比偏弱
+   （白 on 橙 ≈2.3:1，未达非文本 3:1）——因 ghost 同时出现在橙/墨两种底，
+   静态 CSS 无法两全，要完美需 JS 按当前 theme 切环色，成本不值，故取白环折中。 */
+:focus-visible{
+  outline:2.5px solid var(--orange);
+  outline-offset:3px;
+  border-radius:6px;
+}
+/* 墨黑底模块：白环 */
+.pain :focus-visible,
+.why :focus-visible,
+.nofit :focus-visible,
+.manual :focus-visible,
+.cta :focus-visible,
+.nav-drawer :focus-visible,
+.site-foot :focus-visible{ outline-color:#fff; }
+/* 橙底首屏：墨环（墨 on 橙 对比高，hero 内可聚焦元素少，无两全问题） */
+.hero :focus-visible{ outline-color:var(--ink); }
+/* 导航 ghost 态：白环（见顶部注释的妥协说明） */
+.nav.ghost :focus-visible{ outline-color:#fff; }
+
+/* 深色区（hero/墨色模块/抽屉）上换成白环，才看得见 */
+.nav.ghost :focus-visible,
+.why :focus-visible, .pain :focus-visible, .nofit :focus-visible,
+.manual :focus-visible, .cta :focus-visible, .nav-drawer :focus-visible,
+.site-foot :focus-visible{ outline-color:#fff; }
 html{ scrollbar-width:thin; scrollbar-color:transparent transparent; }
 html.is-scrolling{ scrollbar-color:rgba(255,107,53,.85) transparent; }
 ::-webkit-scrollbar{ width:8px; height:8px; }
@@ -3140,9 +3167,9 @@ body.drawer-lock{ overflow:hidden; }
 .seat-dot{
   display:inline-block; width:7px; height:7px; border-radius:50%;
   background:var(--orange); margin-right:6px; vertical-align:1px;
-  animation:seatPulse 1.6s ease-out infinite;
+  animation:seatDotPulse 1.6s ease-out infinite;
 }
-@keyframes seatPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,107,53,.5); } 100%{ box-shadow:0 0 0 9px rgba(255,107,53,0); } }
+@keyframes seatDotPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,107,53,.5); } 100%{ box-shadow:0 0 0 9px rgba(255,107,53,0); } }
 
 /* 票根 */
 .tk-stub{
@@ -3314,3 +3341,38 @@ body.drawer-lock{ overflow:hidden; }
 
 /* ── 抽屉：第十一项入场延迟 ── */
 .nav-drawer.open .nav-drawer-list a:nth-child(11){ transition-delay:.88s; }
+
+/* ── 首屏入场安全网：animation 计时异常时（微信 webview 已知问题）强制可见 ── */
+.hero-fallback .hero-hello,
+.hero-fallback .hero-subtitle{ opacity:1 !important; transform:none !important; animation:none !important; }
+.hero-fallback .wave-line,
+.hero-fallback .face-line{ stroke-dashoffset:0 !important; animation:none !important; }
+.hero-fallback .eye-open{ opacity:1 !important; animation:none !important; }
+.hero-fallback .eye-closed{ opacity:0 !important; animation:none !important; }
+
+/* ── 导航 CTA 可读性强化：写死颜色，杜绝任何环境下的撞色 / 白底白字 ── */
+.nav-cta, .drawer-cta{ border:0; font-family:inherit; cursor:pointer; } /* button reset */
+.nav-cta{ color:#fff; }                                   /* 非 ghost：橙底白字写死 */
+.nav.ghost .nav-cta{
+  background:#fff; color:#15110E;                          /* ghost：白底深字写死，不用 var */
+  box-shadow:inset 0 0 0 1.5px var(--orange);              /* 橙描边，橙 hero 上更醒目 */
+}
+.nav.ghost .nav-cta:hover{ color:#fff; box-shadow:none; }  /* hover 回橙底白字 */
+.nav-cta.copied, .drawer-cta.copied{
+  background:linear-gradient(135deg,#23A06B,#166B46) !important;
+  color:#fff !important; box-shadow:none !important;
+}
+
+/* ── 抽屉丝滑化：去掉遮罩模糊（卡顿主因）+ 抽屉上 GPU 合成层 ── */
+.nav-scrim{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+.nav-drawer{ will-change:transform; }
+.nav-drawer:not(.open){ will-change:auto; }   /* 关上后释放，省内存 */
+
+/* ── 05 结尾"下一站"链接（与 .wnext 同款，补上一轮漏的样式） ── */
+.fnext{
+  display:inline-flex; align-items:center; gap:10px; margin-top:44px;
+  font-family:'Sora','Noto Sans SC',sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:.16em; color:rgba(21,17,14,.5); transition:color .3s;
+}
+.fnext span{ animation:snod 1.8s ease-in-out infinite; }
+.fnext:hover{ color:var(--green,#1F8A5B); }   /* 05 是绿主题，hover 用绿更贴 */
