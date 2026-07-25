@@ -40,7 +40,64 @@
   var themeEls = [];
   if (hero) themeEls.push({ el: hero, theme: 'orange' });
 
+    /* ── 模块注册：bridge(引言) + pain(01痛点)，均为墨色 → 导航走 ghost ── */
+  var bridge = $('#bridge'), pain = $('#pain');
+  if (bridge) themeEls.push({ el: bridge, theme: 'ink' });
+  if (pain) {
+    chapters.push({ el: pain, id: 'pain', num: '01', txt: '痛点 · 你卡在哪' });
+    themeEls.push({ el: pain, theme: 'ink' });
+  }
+
+    var skill = $('#skill');
+  if (skill) {
+    chapters.push({ el: skill, id: 'skill', num: '02', txt: '能力 · 作战系统' });
+    themeEls.push({ el: skill, theme: 'light' });
+  }
+
+    var diff = $('#diff');
+  if (diff) {
+    chapters.push({ el: diff, id: 'diff', num: '03', txt: '区别 · 知道 vs 做到' });
+    themeEls.push({ el: diff, theme: 'light' });
+  }
+
+    var why = $('#why');
+  if (why) {
+    chapters.push({ el: why, id: 'why', num: '04', txt: '为什么是我' });
+    themeEls.push({ el: why, theme: 'dark' });
+  }
+
+    var fit = $('#fit');
+  if (fit) {
+    chapters.push({ el: fit, id: 'fit', num: '05', txt: '适合谁' });
+    themeEls.push({ el: fit, theme: 'light' });
+  }
+
+  var nofit = $('#nofit');
+  if (nofit) {
+    chapters.push({ el: nofit, id: 'nofit', num: '06', txt: '不适合谁' });
+    themeEls.push({ el: nofit, theme: 'dark' });
+  }
+
+    var roadmap = $('#roadmap');
+  if (roadmap) {
+    chapters.push({ el: roadmap, id: 'roadmap', num: '07', txt: '90天流程' });
+    themeEls.push({ el: roadmap, theme: 'light' });
+  }
+
+    var manual = $('#manual');
+  if (manual) {
+    chapters.push({ el: manual, id: 'manual', num: '08', txt: '作战手册' });
+    themeEls.push({ el: manual, theme: 'dark' });
+  }
+
+  var faq = $('#faq');
+  if (faq) {
+    chapters.push({ el: faq, id: 'faq', num: '09', txt: '常见问题' });
+    themeEls.push({ el: faq, theme: 'light' });
+  }
+
   var drawerLinks = $all('.nav-drawer-list a[data-target]');
+  
 
   var M = { navH: 68, vh: 800, docH: 1, chapTops: [], themeTops: [] };
 
@@ -206,5 +263,50 @@
       }
     }
   }
+
+  /* ── 09 · 模块01：播放量计数（冲到 200 卡住变红） ── */
+  var pv = $('#pv'), pvBox = $('#pvBox');
+  if (pv) {
+    if (reduce || !('IntersectionObserver' in win)) {
+      pv.textContent = '200'; if (pvBox) pvBox.classList.add('stuck');
+    } else {
+      new IntersectionObserver(function (ents, ob) {
+        ents.forEach(function (en) {
+          if (!en.isIntersecting) return; ob.disconnect();
+          var n = 0, t = setInterval(function () {
+            n += Math.max(1, Math.ceil((200 - n) / 10));
+            pv.textContent = n;
+            if (n >= 200) { clearInterval(t); pv.textContent = '200'; if (pvBox) pvBox.classList.add('stuck'); }
+          }, 45);
+        });
+      }, { threshold: .5 }).observe(pvBox || pv);
+    }
+  }
+
+  /* ── 10 · 模块01：跑马灯内容复制一份，实现无缝循环 ── */
+  var tapeTrack = $('#tapeTrack');
+  if (tapeTrack) tapeTrack.innerHTML += tapeTrack.innerHTML;
+
+  /* ── 11 · 模块02：系统完整度计数 0→7 ── */
+  var sys = $('#sys'), sysBox = $('#sysBox');
+  if (sys) {
+    if (reduce || !('IntersectionObserver' in win)) {
+      sys.textContent = '7'; if (sysBox) sysBox.classList.add('done');
+    } else {
+      new IntersectionObserver(function (ents, ob) {
+        ents.forEach(function (en) {
+          if (!en.isIntersecting) return; ob.disconnect();
+          var n = 0, t = setInterval(function () {
+            n++; sys.textContent = n;
+            if (n >= 7) { clearInterval(t); if (sysBox) sysBox.classList.add('done'); }
+          }, 160);
+        });
+      }, { threshold: .5 }).observe(sysBox || sys);
+    }
+  }
+
+  /* ── 12 · 模块02：闭环跑马灯复制一份，实现无缝循环 ── */
+  var loopTrack = $('#loopTrack');
+  if (loopTrack) loopTrack.innerHTML += loopTrack.innerHTML;
 
 })();
