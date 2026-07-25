@@ -20,10 +20,8 @@
   function $all(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
   function clamp01(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
 
-  /* ── 01 · 席位同步 + 页脚年份 ── */
+  /* ── 01 · 席位同步 ── */
   $all('.seats').forEach(function (el) { el.textContent = SEATS; });
-  var footYear = $('#footYear');
-  if (footYear) footYear.textContent = new Date().getFullYear();
 
   /* ── 02 · 导航：进度条 / 明暗 / 章节 ── */
   var nav = $('#nav'),
@@ -33,23 +31,18 @@
       chapTxt = $('#navChapterTxt'),
       hero = $('#hero');
 
-  /* 章节单一数据源：hero(00) + 所有 data-chap，顶栏与抽屉共用 */
+  /* 章节数据源：仅有 hero，顶栏与抽屉共用 */
   var chapters = [];
   if (hero) chapters.push({ el: hero, id: 'hero', num: '00', txt: '峰岚佳韵' });
-  $all('section[data-chap]').forEach(function (s) {
-    chapters.push({ el: s, id: s.id, num: s.getAttribute('data-chap'), txt: s.getAttribute('data-nav') || s.id });
-  });
 
-  /* 明暗源：data-theme 块 + hero(橙) + 引言(墨) + 页脚(墨)，三段无 data-theme 的深色区手动登记 */
+  /* 明暗源：hero(橙) */
   var DARK = { dark: 1, ink: 1, orange: 1 };
-  var themeEls = $all('[data-theme]').map(function (el) { return { el: el, theme: el.getAttribute('data-theme') }; });
+  var themeEls = [];
   if (hero) themeEls.push({ el: hero, theme: 'orange' });
-  var introEl = $('.intro-sec'); if (introEl) themeEls.push({ el: introEl, theme: 'ink' });
-  var footEl = $('.foot'); if (footEl) themeEls.push({ el: footEl, theme: 'ink' });
 
   var drawerLinks = $all('.nav-drawer-list a[data-target]');
 
-  var M = { navH: 68, vh: 800, docH: 1, chapTops: [], themeTops: [], heroTop: 0, heroPin: 1 };
+  var M = { navH: 68, vh: 800, docH: 1, chapTops: [], themeTops: [] };
 
   function measure() {
     var y = win.pageYOffset || doc.documentElement.scrollTop;
@@ -58,14 +51,14 @@
     M.docH = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
     M.chapTops = chapters.map(function (c) { return { c: c, top: c.el.getBoundingClientRect().top + y }; });
     M.themeTops = themeEls.map(function (t) {
-      var r = t.el.getBoundingClientRect();
-      return { t: t, top: r.top + y, bottom: r.top + y + r.height };
+      /* sticky 元素（hero）用 offsetTop/offsetHeight，因为 sticky 吸附后
+         getBoundingClientRect().top 恒为 0，会导致区间随 y 漂移，永远覆盖后续区域 */
+      var top, h;
+      if (t.el === hero) { top = hero.offsetTop; h = hero.offsetHeight; }
+      else { var r = t.el.getBoundingClientRect(); top = r.top + y; h = r.height; }
+      return { t: t, top: top, bottom: top + h };
     }).sort(function (a, b) { return a.top - b.top; });
-    var pin = hero && $('.hero-sticky-wrap', hero);
-    if (hero && pin) {
-      M.heroTop = hero.getBoundingClientRect().top + y;
-      M.heroPin = Math.max(1, hero.offsetHeight - pin.offsetHeight);
-    }
+
   }
 
   var lastChapId = null, lastDark = null;
@@ -103,37 +96,12 @@
     }
   }
 
-  /* ── 03 · 首屏视差钉屏 + 编号浮层 ── */
-  var heroBg = hero && $('.hero-bg', hero);
-  var floats = [], floatK = coarse ? 0.5 : 1;
-  if (!reduce) {
-    [['.pain-item .num', 0.05], ['.lc-num', 0.04]].forEach(function (pair) {
-      $all(pair[0]).forEach(function (el) { el.style.willChange = 'transform'; floats.push({ el: el, speed: pair[1] }); });
-    });
-  }
-  function updateHero(y) {
-    if (heroBg) {
-      if (reduce) { heroBg.style.transform = ''; heroBg.style.filter = ''; }
-      else {
-        var p = clamp01((y - M.heroTop) / M.heroPin);
-        heroBg.style.transform = 'translate3d(0,' + (-p * 16).toFixed(2) + '%,0) scale(' + (1 - p * 0.12).toFixed(3) + ')';
-        heroBg.style.filter = 'brightness(' + (1 - p * 0.10).toFixed(3) + ')';
-      }
-    }
-    var c = M.vh / 2;
-    for (var i = 0; i < floats.length; i++) {
-      var r = floats[i].el.getBoundingClientRect();
-      floats[i].el.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - c) * floats[i].speed * floatK).toFixed(1) + 'px,0)';
-    }
-  }
-
-  /* ── 04 · 总滚动驱动（rAF 节流）+ 滚动条显隐 ── */
+  /* ── 03 · 总滚动驱动（rAF 节流）+ 滚动条显隐 ── */
   var ticking = false, sbTimer;
   function onFrame() {
     ticking = false;
     var y = win.pageYOffset || doc.documentElement.scrollTop;
     updateNav(y);
-    updateHero(y);
     doc.documentElement.classList.add('is-scrolling');
     clearTimeout(sbTimer);
     sbTimer = setTimeout(function () { doc.documentElement.classList.remove('is-scrolling'); }, 900);
@@ -146,6 +114,18 @@
   win.addEventListener('load', function () { measure(); onScroll(); });
   if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function () { measure(); onScroll(); });
   measure(); onScroll();
+
+  /* ── Logo 点击回首页（sticky hero 下 #hash 锚点不可靠，JS 兜底） ── */
+  var brandLink = $('.nav-brand');
+  if (brandLink) {
+    brandLink.addEventListener('click', function (e) {
+      /* 仅当 href 指向 hero 时才接管（保持语义，未来换链也不误杀） */
+      if (brandLink.getAttribute('href') === '#hero') {
+        e.preventDefault();
+        win.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      }
+    });
+  }
 
   /* ── 05 · 章节目录抽屉 ── */
   var drawer = $('#navDrawer'), scrim = $('#navScrim'),
@@ -184,23 +164,20 @@
     if (chapBtn) chapBtn.addEventListener('click', openDrawer);
     if (dClose) dClose.addEventListener('click', closeDrawer);
     if (scrim) scrim.addEventListener('click', closeDrawer);
-    drawer.addEventListener('click', function (e) { if (e.target.closest('a')) closeDrawer(); });
+    drawer.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      /* #hero 锚点在 sticky hero 下不可靠，JS 兜底滚动到顶部 */
+      if (link.getAttribute('href') === '#hero') {
+        e.preventDefault();
+        win.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      }
+      closeDrawer();
+    });
     doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
   }
 
-  /* ── 06 · 折叠手风琴（资料 + 答疑共用，同组可多选） ── */
-  $all('[data-acc]').forEach(function (group) {
-    group.addEventListener('click', function (e) {
-      var head = e.target.closest('.acc-head');
-      if (!head) return;
-      var item = head.closest('.acc-item');
-      if (!item) return;
-      var open = item.classList.toggle('open');
-      head.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  });
-
-  /* ── 07 · 入场：.rv 与你的 .reveal 一并点亮 ── */
+  /* ── 06 · 入场：.rv 与你的 .reveal 一并点亮 ── */
   var rvs = $all('.rv, .reveal');
   if (reduce || !('IntersectionObserver' in win)) {
     rvs.forEach(function (el) { el.classList.add('in'); });
@@ -230,27 +207,4 @@
     }
   }
 
-  /* ── 09 · 一键复制微信号（clipboard API + 微信/webview 兜底） ── */
-  $all('.cta-copy').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var idEl = $('.cc-id', btn);
-      var text = btn.getAttribute('data-copy') || (idEl ? idEl.textContent.trim() : '');
-      function done() {
-        btn.classList.add('copied');
-        if (navigator.vibrate) { try { navigator.vibrate(12); } catch (e) {} }
-        clearTimeout(btn._t);
-        btn._t = setTimeout(function () { btn.classList.remove('copied'); }, 1600);
-      }
-      function legacy() {
-        var ta = doc.createElement('textarea');
-        ta.value = text; ta.setAttribute('readonly', '');
-        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
-        doc.body.appendChild(ta); ta.focus(); ta.select();
-        try { doc.execCommand('copy'); done(); } catch (e) {}
-        doc.body.removeChild(ta);
-      }
-      if (navigator.clipboard && win.isSecureContext) navigator.clipboard.writeText(text).then(done, legacy);
-      else legacy();
-    });
-  });
 })();

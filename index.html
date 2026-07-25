@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#FF6B35" />
   <!-- color-scheme：锁 light，防系统暗色模式把白底/滚动条/输入框翻黑 -->
   <meta name="color-scheme" content="light" />
-  <!-- 防 iOS 把“90 天 / 30 分钟 / 剩 7 席”里的数字误识别成电话 -->
+  <!-- 防 iOS 把"90 天 / 30 分钟 / 剩 7 席"里的数字误识别成电话 -->
   <meta name="format-detection" content="telephone=no, address=no, email=no" />
   <meta name="description" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 专属陪跑，两个人盯你一个人，从 0 跑到出单。正在接受新一期学员。" />
 
@@ -53,14 +53,14 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- 无 JS 兜底：入场元素直接显示、循环动画停掉，保证内容可读 -->
-  <noscript><style>.rv{opacity:1!important;transform:none!important}.pain-track,.live-dot{animation:none!important}</style></noscript>
+  <noscript><style>. {opacity:1!important;transform:none!important}.live-dot{animation:none!important}</style></noscript>
 </head>
 <body>
 
 <!-- ╔══════════════════════════════════════════════════════════════╗
      ║  模块 0 · 顶部导航 NAV                                       ║
      ║  悬浮胶囊：左 logo / 中 当前章节(读 data-chap) / 右 状态+预约+汉堡 ║
-     ║  预约按钮统一指向收口 #cta（旧的 #join 已不存在，是死链）        ║
+     ║  预约按钮指向企业微信咨询入口                                        ║
      ╚══════════════════════════════════════════════════════════════╝ -->
 <header class="nav" id="nav" aria-label="主导航">
   <div class="nav-progress" aria-hidden="true"><span id="navProgressBar"></span></div>
@@ -85,8 +85,8 @@
         <i class="nav-dot" aria-hidden="true"></i>
         <span class="nav-status-txt">招生中 · 剩 <b class="seats">7</b> 席</span>
       </span>
-      <a class="nav-cta" href="#cta">
-        <span>预约席位</span>
+      <a class="nav-cta" href="https://work.weixin.qq.com/" target="_blank" rel="noopener">
+        <span>联系咨询</span>
         <svg class="nav-cta-arr" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -100,8 +100,7 @@
 
 <!-- ╔══════════════════════════════════════════════════════════════╗
      ║  模块 0.5 · 章节目录抽屉 DRAWER                               ║
-     ║  9 项 = 00 首页 + 01–09，编号与正文 CHAPTER 对齐               ║
-     ║  .dl-now“正在读”由 JS 给当前项加 .is-now 才显示（默认隐藏）    ║
+     ║  .dl-now"正在读"由 JS 给当前项加 active 才显示                ║
      ╚══════════════════════════════════════════════════════════════╝ -->
 <div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 
@@ -112,15 +111,7 @@
   </div>
 
   <nav class="nav-drawer-list" aria-label="章节目录">
-    <a href="#hero"     data-target="hero"><span class="dl-num">00</span><span class="dl-txt">首页 · Hello</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#pain"     data-target="pain"><span class="dl-num">01</span><span class="dl-txt">你是不是也卡在这</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#learn"    data-target="learn"><span class="dl-num">02</span><span class="dl-txt">你能学到什么</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#diff"     data-target="diff"><span class="dl-num">03</span><span class="dl-txt">和录播课的区别</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#why"      data-target="why"><span class="dl-num">04</span><span class="dl-txt">为什么选我</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#fit"      data-target="fit"><span class="dl-num">05·06</span><span class="dl-txt">适合 / 不适合</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#flow"     data-target="flow"><span class="dl-num">07</span><span class="dl-txt">90 天陪跑流程</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#material" data-target="material"><span class="dl-num">08</span><span class="dl-txt">学习资料库</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
-    <a href="#faq"      data-target="faq"><span class="dl-num">09</span><span class="dl-txt">常见顾虑解答</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
+    <a href="#hero" data-target="hero"><span class="dl-num">00</span><span class="dl-txt">首页 · Hello</span><span class="dl-now" aria-hidden="true">正在读</span><span class="dl-arr" aria-hidden="true">↗</span></a>
   </nav>
 
   <div class="nav-drawer-foot">
@@ -128,7 +119,7 @@
       <i class="nav-dot" aria-hidden="true"></i>
       <span>招生中 · 剩 <b class="seats">7</b> 席</span>
     </span>
-    <a class="drawer-cta" href="#cta">预约我的席位 →</a>
+    <a class="drawer-cta" href="https://work.weixin.qq.com/" target="_blank" rel="noopener">联系咨询 →</a>
   </div>
 </div>
 
@@ -136,14 +127,12 @@
      ║  模块 1 · 首屏 HERO（钉屏 + 视差，结构封板，DOM 未改动）        ║
      ╚══════════════════════════════════════════════════════════════╝ -->
 <section class="hero" id="hero" data-theme="dark">
-  <div class="hero-sticky-wrap">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-slash"></div>
-      <div class="hero-glow"></div>
-      <div class="hero-grain"></div>
-    </div>
-
-    <div class="hero-inner-content">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-slash"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-grain"></div>
+  </div>
+  <div class="hero-inner-content">
       <div class="hero-grid">
         <div class="hero-copy">
           <h1 class="hero-hello">Hello<span class="hello-bang">！</span></h1>
@@ -157,15 +146,11 @@
                                M6,14 C30,3 50,3 74,14 C98,25 118,25 142,14 C166,3 186,3 210,14"/>
             </path>
           </svg>
-          <p class="hero-welcome">欢迎来到<span class="hw-brand">峰岚佳韵</span></p>
-          <a class="hero-invite" href="#pain">
-            <span>里面给你备了点东西，慢慢看</span>
-            <span class="invite-arr" aria-hidden="true">↓</span>
-          </a>
+          <h2 class="hero-subtitle"><span class="sub-lead">欢迎来到</span><span class="sub-brand">峰岚佳韵</span></h2>
         </div>
 
         <div class="hero-host" aria-hidden="true">
-          <span class="host-glow"></span>
+          <div class="hero-host-glow" aria-hidden="true"></div>
           <span class="host-particle p-star"></span>
           <span class="host-particle p-dot"></span>
           <span class="host-particle p-ring"></span>
@@ -202,439 +187,14 @@
             <span class="foot-sep" aria-hidden="true">/</span>
             <span class="foot-tag">峰岚佳韵 · 90 天陪跑实录</span>
           </span>
-          <a class="foot-next" href="#pain">你是不是也卡在这<span class="foot-arr" aria-hidden="true">↓</span></a>
+          <a class="foot-next" role="button" aria-label="了解更多">
+            了解更多
+            <span class="foot-arr" aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
-    </div>
-  </div>
 </section>
 
-<!-- ============ 引言过渡带 ============ -->
-<section class="sec intro-sec" id="intro" data-theme="ink" aria-label="引言">
-  <div class="wrap intro-wrap">
-    <p class="intro-kicker rv">从这里开始</p>
-    <p class="intro-line rv" style="--d:80ms">
-      “90 天的陪跑服务不是终点，而是起点”<br>
-      <span class="intro-em">从这里开始，你不再是一个人摸索。</span>
-    </p>
-  </div>
-</section>
-
-<!-- ============ 模块 01 · 我能帮你解决什么问题 ============ -->
-<section class="sec pain-sec" id="pain" data-theme="light" data-chap="01" data-nav="你是不是也卡在这" aria-labelledby="t-pain">
-  <div class="wrap">
-    <header class="sec-head rv">
-      <span class="chap">CHAPTER 01</span>
-      <h2 class="sec-title" id="t-pain">我能帮你解决什么问题？</h2>
-      <p class="sec-sub">如果你有以下任何一种感觉，这个陪跑就是为你准备的。</p>
-    </header>
-
-    <div class="pain-marquee rv" style="--d:60ms" aria-hidden="true">
-      <div class="pain-track">
-        <span>今天学怎么选爆品，明天学带货文案的爆款公式，后天学全域投放的实操技巧</span>
-        <span>折腾几个月一分钱没赚到，时间浪费了，投流还亏了好几万，本都没回来</span>
-        <span>同样的品、同样的素材、同样的投放，她们 kuku 爆单，我亏出去的钱还没回来</span>
-        <span>学到的都是碎片化技巧，没有一套完整的打品思路</span>
-        <span>教投流的不教素材怎么拍、文案怎么写，打法是她们试的，钱亏的是你自己的</span>
-        <span>卖素材的拉个大群，品是她们选的，素材是很多人用的，问题发群里石沉大海</span>
-        <span>今天学怎么选爆品，明天学带货文案的爆款公式，后天学全域投放的实操技巧</span>
-        <span>折腾几个月一分钱没赚到，时间浪费了，投流还亏了好几万，本都没回来</span>
-        <span>同样的品、同样的素材、同样的投放，她们 kuku 爆单，我亏出去的钱还没回来</span>
-        <span>学到的都是碎片化技巧，没有一套完整的打品思路</span>
-        <span>教投流的不教素材怎么拍、文案怎么写，打法是她们试的，钱亏的是你自己的</span>
-        <span>卖素材的拉个大群，品是她们选的，素材是很多人用的，问题发群里石沉大海</span>
-      </div>
-    </div>
-
-    <p class="pain-hook rv" style="--d:120ms">粉丝是 chua 的，素材是买的，结果发出去的挂车视频——没人看，更没人买。</p>
-
-    <ol class="pain-list">
-      <li class="pain-item rv"><span class="num" aria-hidden="true">01</span><div class="pain-txt"><h3>账号做不起来，不知道从哪开始</h3><p>注册几个月，发了十几条视频，播放量永远卡在 200。不知道做什么赛道、卖给谁、用什么身份。继续这样，半年后你会告诉自己“我不适合做带货”。</p></div></li>
-      <li class="pain-item rv" style="--d:60ms"><span class="num" aria-hidden="true">02</span><div class="pain-txt"><h3>不会选品，选一个死一个</h3><p>看到别人带什么火就跟什么，跟了就扑街。不知道怎么判断一个品能不能做，全靠运气。选品靠运气的人，永远做不大。</p></div></li>
-      <li class="pain-item rv" style="--d:120ms"><span class="num" aria-hidden="true">03</span><div class="pain-txt"><h3>不会写脚本，视频没人看</h3><p>拍了剪了发出去，没人看没人买。开头留不住人、中间留不住人、结尾促不了单。产品再好，用户连看完的耐心都没有。</p></div></li>
-      <li class="pain-item rv" style="--d:180ms"><span class="num" aria-hidden="true">04</span><div class="pain-txt"><h3>素材拍了很多，一条都跑不动</h3><p>投了几百块随心推，一条素材都跑不动。不知道什么画面能留人、什么画面能转化。没有能跑的素材，投再多钱也是往水里扔。</p></div></li>
-      <li class="pain-item rv" style="--d:240ms"><span class="num" aria-hidden="true">05</span><div class="pain-txt"><h3>看不懂数据，不知道往哪调</h3><p>播放低不知是内容还是标签，转化低不知是产品还是话术，投了钱不知该继续还是该停。看不懂数据，就是蒙着眼睛开车。</p></div></li>
-      <li class="pain-item rv" style="--d:300ms"><span class="num" aria-hidden="true">06</span><div class="pain-txt"><h3>完全不懂全域投放</h3><p>不知道什么时候该加预算、什么时候该调整出价，赚的没有亏的多。</p></div></li>
-      <li class="pain-item rv" style="--d:360ms"><span class="num" aria-hidden="true">07</span><div class="pain-txt"><h3>坚持不下来，做着做着就放弃了</h3><p>发了半个月没起色，心态崩了。一个人做账号，没人监督没人反馈，慢慢就懈怠了。放弃最容易，但前面的努力全白费了。</p></div></li>
-    </ol>
-
-    <p class="pain-bridge rv">遇到解决不了的问题没人带，然后到处寻找解决办法——</p>
-
-    <div class="pain-voices">
-      <article class="voice rv"><h4>刷了无数教程，越刷越焦虑</h4><p>你关注了几十个带货博主，收藏了几百条视频，每天刷到凌晨两点，感觉自己学了好多。但关上手机，回到自己的账号面前，还是不知道明天该拍什么。你学了一堆“技巧”，但没有一个能落地。因为你缺的不是技巧，你缺的是一个能告诉你“今天就做这一件事”的人。</p></article>
-      <article class="voice rv" style="--d:80ms"><h4>发了十几条视频，播放量卡在 200</h4><p>你认认真真拍、认认真真剪，发出去之后每隔五分钟刷新一次后台。两个小时过去了，播放量停在 187。你安慰自己“可能时间不对”，换了时间再发，还是 200。你开始怀疑自己：是不是账号被限流了？是不是我不适合做这个？是不是我长得不好看？是不是我声音不好听？其实都不是。你只是不知道抖音现在要什么。</p></article>
-      <article class="voice rv" style="--d:160ms"><h4>看到别人爆了，心里又酸又急</h4><p>你刷到一个账号，粉丝还没你多，视频拍得也就那样，结果人家一条视频卖了十几万。你点进去看他之前的内容，发现也没什么特别的。你心里想：“凭什么？我比他差在哪了？”你不知道差在哪，所以你连努力的方向都没有。这种感觉比“知道自己不行”更难受。</p></article>
-      <article class="voice rv" style="--d:240ms"><h4>花钱买了课，发现还是不会</h4><p>你花了几百块买了一门课，听了两节觉得“哇，讲得真好”，听完三节开始犯困，听完五节就再也没打开过。不是课不好，是你发现自己听完了还是不会写脚本、还是不会选品、还是不知道第一步该点哪里。你又回到了原点，只是钱包瘪了一点。</p></article>
-      <article class="voice rv" style="--d:320ms"><h4>一个人做账号，做着做着就想放弃了</h4><p>你身边没有人做这个，你遇到问题了不知道问谁。卡住了，就去网上搜，搜出来的答案五花八门，你试了这个试那个，越试越乱。你开始拖更，从一天一条变成三天一条，再变成一周一条。你心里知道这样不行，但你提不起劲。因为没有人盯着你，没有人告诉你“这一步你走对了，继续”。</p></article>
-      <article class="voice rv" style="--d:400ms"><h4>算了算账，赚的还没亏的多</h4><p>你终于出单了，高兴了一整天。月底一算账：投流花了 800，佣金收了 300，净亏 500。你安慰自己“就当交学费了”，但你心里清楚，这学费交得不明不白。你不知道问题出在哪，所以下次还是会亏。</p></article>
-    </div>
-
-    <div class="pain-verdict rv">
-      <p class="verdict-lead">如果你有以上任何一种感觉，我想告诉你：<strong>不是你的问题，是你缺一个能带你走完 90 天的人。</strong></p>
-      <p class="verdict-sub">你不需要更多的技巧，你需要的是——</p>
-      <ul class="verdict-list">
-        <li>有人告诉你“今天就做这一件事”</li>
-        <li>有人在你卡住的时候说“往这个方向调”</li>
-        <li>有人在你做对的时候说“继续保持”</li>
-        <li>有人在你做错的时候说“这里要改”</li>
-      </ul>
-      <p class="verdict-end">这就是我陪你 90 天要做的事。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 模块 02 · 你能学到什么 ============ -->
-<section class="sec learn-sec" id="learn" data-theme="ink" data-chap="02" data-nav="你能学到什么" aria-labelledby="t-learn">
-  <div class="wrap learn-grid">
-    <div class="learn-aside rv">
-      <span class="chap">CHAPTER 02</span>
-      <h2 class="sec-title" id="t-learn">你能学到什么</h2>
-      <p class="learn-claim">不是学会几条方法，<br>是拥有一套<strong>能反复使用的带货作战系统</strong>。</p>
-      <p class="learn-path">定位 · 选品 · 素材 · 文案 · 全域投放 · 数据分析 · 复盘<span class="learn-note">（详细学习目录见模块 08）</span></p>
-    </div>
-
-    <ol class="learn-list">
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">01</span><div class="lc-body"><h3>用户需求洞察</h3><p class="lc-oneline">拆解三层用户心理诉求，从观看层需求到创作层需求，知道用户到底想要什么。</p><div class="lc-tags"><span>三层心理诉求</span><span>观看层需求</span><span>创作层需求</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">02</span><div class="lc-body"><h3>一套完整的账号定位系统</h3><p class="lc-oneline">从“我是谁、帮谁、给什么”到人群画像、模式选择（人带货 / 货带人），一次性定死，不再摇摆。</p><p class="lc-detail">会用三层定位法（基础标签层 → 人群需求层 → 产品价值层）给账号做定位；能清晰回答“我是谁、我卖给谁、我提供什么价值”；不会因为别人做什么就跟着换方向。</p><div class="lc-tags"><span>三层定位法</span><span>人群画像</span><span>人带货 / 货带人</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">03</span><div class="lc-body"><h3>对标拆解能力</h3><p class="lc-oneline">六维拆解法拆解对标账号素材，找到差异化切入点，从评论区挖出选题。不是照抄，是超越。</p><p class="lc-detail">针对人群 / 人群需求 / 内容价值 / 产品价值 / 内容结构 / 展现形式六个维度拆；能找到对标的差异化切入点；能从对标评论区里挖出选题。</p><div class="lc-tags"><span>六维拆解法</span><span>差异化切入</span><span>评论区挖选题</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">04</span><div class="lc-body"><h3>一套可复用的选品决策系统</h3><p class="lc-oneline">五项硬性指标 + 四个要素，用选品综合评估表判断一个品能不能做，算出保本 ROI 和放量 ROI。</p><p class="lc-detail">根据人群需求找产品、根据产品价值匹配人群；从产品价值、人群匹配、内容可行性、财务核算四个维度判断；知道一个品赚不赚钱、能赚多少钱，不盲目跟品，也不错过好品。</p><div class="lc-tags"><span>五指标四要素</span><span>综合评估表</span><span>保本 / 放量 ROI</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">05</span><div class="lc-body"><h3>一套能留住人的脚本结构</h3><p class="lc-oneline">会写不挂车内容（涨粉、打标签、建模型）和挂车内容（转化、变现），掌握 O5A 人群动线。</p><p class="lc-detail">A1 痛点扎心 → A2 我也如此 → A3 问题有解 → A4 放心下单；知道七种核心画面怎么用、什么时候用、用在什么地方。</p><div class="lc-tags"><span>O5A 人群动线</span><span>7 种核心画面</span><span>不挂车 / 挂车</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">06</span><div class="lc-body"><h3>产品价值翻译能力</h3><p class="lc-oneline">拿到任何产品拆出八大价值，把说明书参数翻译成用户听得懂、有感觉的人话。</p><p class="lc-detail">能挑出最核心的 3–4 个价值点，写进带货脚本。</p><div class="lc-tags"><span>八大价值</span><span>参数 → 人话</span><span>核心 3–4 点</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">07</span><div class="lc-body"><h3>一套数据归因与调优能力</h3><p class="lc-oneline">播放低 → 内容还是标签？转化低 → 产品还是话术？投流亏 → 品还是素材？不再蒙眼开车。</p><div class="lc-tags"><span>看懂完播 / 停留 / 转化</span><span>精准迭代内容</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">08</span><div class="lc-body"><h3>全域打品实操</h3><p class="lc-oneline">随心推 + 千川。开橱窗 → 选品 → 拍素材 → 挂车 → 出单 → 复盘 → 放大，每一步亲手走过，不是纸上谈兵。</p><p class="lc-detail">稳定出单后，依靠千川微量付费持续放大整体销量收益。</p><div class="lc-tags"><span>随心推 + 千川</span><span>完整闭环</span><span>自然流微投放</span></div></div></li>
-      <li class="learn-card rv"><span class="lc-num" aria-hidden="true">09</span><div class="lc-body"><h3>全周期运营能力</h3><p class="lc-oneline">知道 90 天从 0 到 1 的完整节奏：学习期 → 前期准备 → 中期起号 → 后期打品，每个阶段知道该做什么、看什么数据、用什么策略。</p><p class="lc-detail">不会在一个阶段做错另一个阶段的事。</p><div class="lc-tags"><span>前期准备</span><span>中期起号</span><span>后期打品</span></div></div></li>
-      <li class="learn-card lc-finale rv"><span class="lc-num" aria-hidden="true">10</span><div class="lc-body"><h3>带货的核心思维：判断力 · 调整力 · 归因力</h3><p class="lc-oneline">方法可以学，思维学不来——除非有人带着你走一遍她是怎么想的。<strong>这就是这个陪跑最值钱的部分。</strong></p><p class="lc-detail">跳出新手碎片化技巧误区，搭建长久带货变现的底层体系，沉淀成你自己的系统化商业思维。</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ 模块 03 · 和市面上的录播课有什么区别 ============ -->
-<section class="sec diff-sec" id="diff" data-theme="light" data-chap="03" data-nav="和录播课的区别" aria-labelledby="t-diff">
-  <div class="wrap">
-    <header class="sec-head rv">
-      <span class="chap">CHAPTER 03</span>
-      <h2 class="sec-title" id="t-diff">和市面上的录播课有什么区别？</h2>
-      <p class="sec-sub">一句话：录播课教你“知道”，我陪你“做到”。</p>
-    </header>
-
-    <div class="diff-legend rv" style="--d:60ms">
-      <span class="lg-them"><i aria-hidden="true">✕</i> 市面流水线录播课</span>
-      <span class="lg-us"><i aria-hidden="true">✓</i> 峰岚佳韵 · 2V1 专属陪跑</span>
-    </div>
-
-    <ul class="diff-rows">
-      <li class="diff-row rv"><span class="dr-dim">交付形式</span><span class="dr-them">预录视频，批量售卖</span><span class="dr-us">根据你的账号实时诊断、实时调整</span></li>
-      <li class="diff-row rv"><span class="dr-dim">教学形式</span><span class="dr-them">统一录制视频，千人共用一套内容</span><span class="dr-us">无录播课，一线实战沉淀专属 SOP 体系</span></li>
-      <li class="diff-row rv"><span class="dr-dim">内容适配</span><span class="dr-them">通用内容，讲“大多数人”</span><span class="dr-us">专属定制，只讲“你的账号”</span></li>
-      <li class="diff-row rv"><span class="dr-dim">答疑方式</span><span class="dr-them">社群统一答疑，回复慢、问题堆积</span><span class="dr-us">2V1 专属，不怕你问得多，就怕你一句也不问</span></li>
-      <li class="diff-row rv"><span class="dr-dim">执行监督</span><span class="dr-them">靠自觉，完课率普遍低于 20%</span><span class="dr-us">根据你现阶段灵活调整不同的运营策略</span></li>
-      <li class="diff-row rv"><span class="dr-dim">数据复盘</span><span class="dr-them">不负责，自己看后台摸索</span><span class="dr-us">帮你看数据、找问题、给方案</span></li>
-      <li class="diff-row rv"><span class="dr-dim">选品指导</span><span class="dr-them">教“选品的方法”</span><span class="dr-us">你拿不准的品，发给我帮你判断</span></li>
-      <li class="diff-row rv"><span class="dr-dim">脚本优化</span><span class="dr-them">给模板，自己套</span><span class="dr-us">你写完发我，我逐条帮你分析</span></li>
-      <li class="diff-row rv"><span class="dr-dim">投放策略</span><span class="dr-them">讲“投流原理”</span><span class="dr-us">看你数据帮你定出价、定预算、定人群</span></li>
-      <li class="diff-row rv"><span class="dr-dim">完课保障</span><span class="dr-them">买完可能不看，没人管</span><span class="dr-us">90 天贴身陪跑，你不跑我推你跑</span></li>
-      <li class="diff-row rv"><span class="dr-dim">账号兜底</span><span class="dr-them">账号做废无修复方案，亏了你承担</span><span class="dr-us">濒危账号诊断盘活，全程运营兜底陪伴</span></li>
-    </ul>
-
-    <div class="diff-core rv">
-      <span class="dc-them">卖“成功案例”</span>
-      <span class="dc-vs" aria-hidden="true">VS</span>
-      <span class="dc-us">卖“解决方案”</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 模块 04 · 为什么要选择我 ============ -->
-<section class="sec why-sec" id="why" data-theme="orange" data-chap="04" data-nav="为什么选我" aria-labelledby="t-why">
-  <div class="wrap">
-    <header class="sec-head sec-head-light rv">
-      <span class="chap">CHAPTER 04</span>
-      <h2 class="sec-title" id="t-why">为什么要选择我</h2>
-      <p class="sec-sub">不是因为我最厉害，是因为我最适合带你走这条路。</p>
-    </header>
-
-    <ul class="why-rows">
-      <li class="why-row rv"><span class="why-role">当过编导</span><div class="why-txt"><p class="why-know">吃透镜头语言与留人节奏，精通画面拍摄技巧。</p><p class="why-give">拒绝死记硬背话术，教会你让视频自带说服力。</p></div></li>
-      <li class="why-row rv" style="--d:80ms"><span class="why-role">做过策划</span><div class="why-txt"><p class="why-know">懂用户画像、懂需求拆解、懂卖点怎么转成买点。</p><p class="why-give">帮你找准“你的账号该卖给谁、说什么话”。</p></div></li>
-      <li class="why-row rv" style="--d:160ms"><span class="why-role">当过投手</span><div class="why-txt"><p class="why-know">懂随心推、懂千川、懂打品期节奏。</p><p class="why-give">帮你把钱花在能出单的地方，不花一分冤枉钱。</p></div></li>
-      <li class="why-row rv" style="--d:240ms"><span class="why-role">做过运营</span><div class="why-txt"><p class="why-know">全盘账号运营经验，熟悉抖音账号全链路变现逻辑。</p><p class="why-give">及时调整各类问题，保证内容、流量、投放、变现完美闭环，稳步实现正向盈利。</p></div></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ 模块 05 + 06 · 适合 / 不适合 ============ -->
-<section class="sec fit-sec" id="fit" data-theme="light" data-chap="05 · 06" data-nav="适合 / 不适合" aria-labelledby="t-fit">
-  <div class="wrap">
-    <header class="sec-head rv">
-      <span class="chap">CHAPTER 05 / 06</span>
-      <h2 class="sec-title" id="t-fit">什么样的人适合，什么样的人不适合</h2>
-      <p class="sec-sub">诚实比承诺更重要，适合的才是最好的。</p>
-    </header>
-
-    <div class="fit-grid">
-      <div class="fit-panel fit-yes rv">
-        <h3 class="fp-head"><i aria-hidden="true">✓</i> 什么样的人适合</h3>
-        <ul class="fp-list">
-          <li><b>纯新手，从 0 开始做带货账号：</b>没有人带，自己瞎摸索，发了半个月没起色，不知道问题出在哪。</li>
-          <li><b>做过一段时间但卡住了：</b>账号有几百粉丝，出了几单，但播放量和转化率都上不去，不知道怎么突破。</li>
-          <li><b>会拍素材但不懂运营逻辑：</b>素材拍得不错，但不知道什么时候该投流、什么时候该换方向、怎么看数据调策略。</li>
-          <li><b>想做副业但没有系统方法：</b>白天有工作，晚上想做个带货账号，需要一套能照着做的 SOP。</li>
-          <li><b>报过很多课程但没做起来的：</b>做过带货但卡在瓶颈期，想突破但找不到方向。</li>
-        </ul>
-        <div class="fp-tags">
-          <span>愿意花时间执行，不指望一夜暴富</span>
-          <span>有一定学习能力和自律性，能按要求完成阶段任务</span>
-          <span>愿意为专业付费，但希望看到真实过程和结果</span>
-          <span>心态开放，能接受“你的方法可能和我以前的不一样”</span>
-        </div>
-      </div>
-
-      <div class="fit-panel fit-no rv" id="unfit" style="--d:120ms">
-        <h3 class="fp-head"><i aria-hidden="true">✕</i> 什么样的人不适合参加</h3>
-        <ul class="fp-list">
-          <li><b>想一夜暴富的：</b>90 天是从 0 到 1 的周期，不是从 0 到 100 的周期。我不能保证你 90 天后月入十万，我只能保证你 90 天后知道自己在做什么、为什么这么做。</li>
-          <li><b>不愿意动手的：</b>陪跑是教你做、带你做，不是替你做。你不拍视频、不写脚本、不投流，我帮不了你。</li>
-          <li><b>不尊重数据的：</b>凭感觉做内容、不看数据反馈、不接受调整建议的，来了也是浪费时间。</li>
-          <li><b>想学黑科技的：</b>我这里没有“一招爆粉”“三天起号”的秘籍，只有扎扎实实的定位、选品、脚本、素材、运营体系。</li>
-          <li><b>连每天 30 分钟都抽不出来的：</b>做带货账号需要持续投入时间，如果你连每天看数据、写脚本的时间都没有，建议等有空了再来。</li>
-        </ul>
-        <div class="fp-tags fp-tags-no">
-          <span>指望“交了钱就自动赚钱”，不愿意动手执行</span>
-          <span>连一条视频都懒得拍，想直接要结果</span>
-          <span>今天想做带货明天想做直播后天想做微商，没有定力</span>
-          <span>预算紧张到影响生活，借钱来做带货</span>
-          <span>只想学“一招鲜”的捷径，不想学底层逻辑</span>
-          <span>心态脆弱，被我说两句就接受不了</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 模块 07 · 我的 90 天陪跑流程 ============ -->
-<section class="sec flow-sec" id="flow" data-theme="ink" data-chap="07" data-nav="90 天陪跑流程" aria-labelledby="t-flow">
-  <div class="wrap">
-    <header class="sec-head sec-head-light rv">
-      <span class="chap">CHAPTER 07</span>
-      <h2 class="sec-title" id="t-flow">我的 90 天陪跑流程</h2>
-      <p class="sec-sub">三个阶段，从规划到验证到放大，一步一个脚印。</p>
-    </header>
-
-    <ol class="flow-pre rv" style="--d:60ms">
-      <li>付款</li><li>下载飞书</li><li>自学手册<span class="pre-note">3–7 天，不计入陪跑时间</span></li>
-      <li>填写问卷</li>
-      <li class="pre-branch"><span class="pre-ok">及格 → 正式进入 90 天陪跑期</span><span class="pre-no">不及格 → 找出问题，解决后再进入</span></li>
-    </ol>
-
-    <ol class="flow-timeline">
-      <li class="flow-node rv">
-        <span class="fn-dot" aria-hidden="true"></span>
-        <div class="fn-card">
-          <span class="fn-days">第 1–7 天 · 规划期</span>
-          <h3>定定位、定人群、定模式</h3>
-          <p>2V1 深度诊断你的账号现状，确定你是走“人带货”还是“货带人”，锁定目标人群，输出《账号定位表》。同步搭建对标库、选题库框架。</p>
-          <p class="fn-deliver">📦 本阶段交付：专属定位作战书 · 对标账号清单 · 首批 30 个选题 · 账号变现方案</p>
-        </div>
-      </li>
-      <li class="flow-node rv">
-        <span class="fn-dot" aria-hidden="true"></span>
-        <div class="fn-card">
-          <span class="fn-days">第 8–30 天 · 验证期</span>
-          <h3>选品、拍素材、跑出第一条能出单的视频</h3>
-          <p>按选品五指标四要素，亲自实测。写脚本、拍素材、发布、看数据、调整。目标是跑出至少 1 条能稳定出单的素材和 1 个能跑通的品。</p>
-          <p class="fn-deliver">📦 本阶段交付：选品决策报告 · 脚本逐条修改 · 素材诊断反馈 · 第 30 天 1V1 复盘</p>
-        </div>
-      </li>
-      <li class="flow-node rv">
-        <span class="fn-dot" aria-hidden="true"></span>
-        <div class="fn-card">
-          <span class="fn-days">第 31–60 天 · 放大期</span>
-          <h3>素材批量复制、投放测试、数据调优</h3>
-          <p>一条素材跑通后，批量复制同逻辑不同场景的素材。开始小额投放测试（随心推 / 千川），根据数据调整出价、预算、人群。第 60 天 1V1 投放诊断。</p>
-          <p class="fn-deliver">📦 本阶段交付：投放调优方案 · 素材批量生产清单 · 数据归因分析报告</p>
-        </div>
-      </li>
-      <li class="flow-node rv">
-        <span class="fn-dot" aria-hidden="true"></span>
-        <div class="fn-card">
-          <span class="fn-days">第 61–90 天 · 巩固期</span>
-          <h3>建立 SOP、拓展品类、独立运营能力</h3>
-          <p>把你 90 天跑通的全流程沉淀成你自己的 SOP。尝试第二个品，验证可复制性。目标是 90 天结束时，你能独立选品、拍素材、看数据、调投放，不再依赖我。</p>
-          <p class="fn-deliver">📦 本阶段交付：个人专属 SOP 手册 · 品类拓展方案 · 最后一周总结复盘，指出长处和短板</p>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ 模块 08 · 我会提供哪些资料（实时更新） ============ -->
-<section class="sec mat-sec" id="material" data-theme="light" data-chap="08" data-nav="学习资料库" aria-labelledby="t-material">
-  <div class="wrap">
-    <header class="sec-head rv">
-      <span class="chap">CHAPTER 08</span>
-      <h2 class="sec-title" id="t-material">我会提供哪些资料供你学习</h2>
-      <p class="sec-sub"><span class="live-dot" aria-hidden="true"></span> 资料库实时跟新，入学即得，持续补充。</p>
-    </header>
-
-    <div class="acc mat-acc" data-acc>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">01</span><span class="acc-t">第一部分 · 抖音带货彻底职业化</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">2026 六大新规，决定你还能不能赚到钱。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">02</span><span class="acc-t">第二部分 · 我对带货的理解（新人必看）</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">
-          <p>一、为什么你做不起来？</p>
-          <p>二、第一件事：先搞懂带货的钱到底是怎么赚到手的？</p>
-          <p>三、第二件事：想要靠带货赚到钱，你得练出这三种能力——</p>
-          <ul><li>能力一：懂人群需求——这是一切的起点</li><li>能力二：懂产品价值——把你的产品说明书翻译成用户想听的情话</li><li>能力三：懂内容需求——你就是那个编导</li></ul>
-        </div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">03</span><span class="acc-t">第三部分 · 关于带货的理论知识（视频简介 + 核心注释 + 实操）</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">
-          <p>第一章 读懂短视频带货的底层规则：1.1 认识抖音电商——兴趣是内容创作的核心；1.2 带货赚钱的本质——从流量收割到人群资产运营；1.3 影响变现效率的关键——读懂 O5A 模型；1.4 影响流量转化的关键——读懂 3M 流量池考核数据与推流指标；1.5 合规与优质内容标准——平台要什么、不要什么（可看可不看，实操当中有详细版）。</p>
-          <p>第二章 赛道定位的核心策略：2.1 爆单的核心密码——深度理解“人货场”铁三角关系；2.2 持续产生收益的关键——精准定位你的兴趣引力中心。</p>
-          <p>第三章 选品定乾坤——锁定你的爆款基因。</p>
-          <p>第四章 素材破心智——打造高吸引力内容载体。</p>
-          <p>第五章 文案做转化——驱动下单的攻心文案框架。</p>
-          <p>第六章 投放扩规模——全域投放的精准杠杆术。</p>
-        </div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">04</span><span class="acc-t">第四部分 · 90 天全周期起号-打标签-打爆品-稳定变现运营思路</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">
-          <p><b>前期准备：</b>搭建合规账号，定好整套账号的变现逻辑，规避前期风控，找准赛道、人群、选题、差异化，为后续内容产出打好全部基础。</p>
-          <p><b>中期起号：</b>这个阶段的目标不是出单，不是赚钱，而是发布不挂车的内容，去积累精准的 A2 人群——也就是拉人群、打标签。</p>
-          <p><b>后期打品：</b>思路是从内容标签转向电商标签，开始变现。</p>
-        </div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">05</span><span class="acc-t">第五部分 · 关于带货过程中的实操心得</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">
-          <ol><li>个人、个体、企业应该选择哪种带货资质？</li><li>两种不同带货模式应该怎么选？</li><li>短视频带货的人货场三维账号定位完整实操步骤</li><li>详细的选品操作流程</li><li>怎么找对标以及怎么做分析</li><li>怎么搭建你的选题库</li><li>不挂车内容的脚本应该怎么写</li><li>带货挂车短视频脚本制作落地实操手册（可直接开拍，适配抖音好看计划）</li><li>7 天内容数据分析法（自然流）</li><li>全域投放实操全流程手册（标准化入门版）</li><li>全域投放理论知识（进阶版理论篇）</li></ol>
-          <p class="acc-attach">附 1：一篇好的带货文案，最怕的就是“太硬”，像在念产品说明书。</p>
-          <p class="acc-attach">附 2：产品价值翻译 SOP——三步把你的说明书变成人话。</p>
-        </div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-no" aria-hidden="true">06</span><span class="acc-t">第六部分 · 实操当中需要用到的完整脚本表格</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">
-          <ol><li>账号定位表</li><li>选品综合评估表</li><li>对标内容分析与差异化定位表</li><li>选题规划与管理表</li><li>不挂车内容脚本撰写表</li><li>挂车内容脚本撰写表</li><li>优质素材 7 大核心画面简化版</li></ol>
-        </div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 模块 09 · 常见问题与顾虑解答 ============ -->
-<section class="sec faq-sec" id="faq" data-theme="cream" data-chap="09" data-nav="常见顾虑解答" aria-labelledby="t-faq">
-  <div class="wrap wrap-narrow">
-    <header class="sec-head rv">
-      <span class="chap">CHAPTER 09</span>
-      <h2 class="sec-title" id="t-faq">常见问题与顾虑解答</h2>
-      <p class="sec-sub">把你会犹豫的那几个问题，先摊开说清楚。</p>
-    </header>
-
-    <div class="acc faq-acc" data-acc>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">我完全是新手，一点基础都没有，能跟得上吗？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">能。陪跑就是从 0 开始的：付款后先给你自学手册（3–7 天，不计入陪跑时间），填问卷及格才正式进入 90 天。规划期第一件事就是 2V1 深度诊断、把定位一次性定死。你不需要先“学会”再来，我会告诉你“今天就做这一件事”。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">90 天能保证我赚到钱、月入多少吗？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">不能，也不该有人这么保证。90 天是从 0 到 1 的周期，不是从 0 到 100 的周期。我能保证的是：90 天结束时你知道自己在做什么、为什么这么做，能独立选品、拍素材、看数据、调投放。想一夜暴富的，这里不适合你。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">我每天要投入多少时间？上班族能做吗？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">做带货账号需要持续投入时间，每天至少留出看数据、写脚本的空档。如果你连每天 30 分钟都抽不出来，我建议等有空了再来。但白天上班、晚上照着 SOP 执行，是完全可行的——这本来就是为想做副业的人设计的。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">和我之前买的录播课，到底差在哪？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">录播课教你“知道”，我陪你“做到”。录播是千人一套、社群答疑、靠自觉、完课率不到 20%；这里是 2V1 专属、只讲你的账号、你写完脚本我逐条改、你拿不准的品我帮你判、看你数据帮你定出价定预算。卖成功案例和卖解决方案，是两回事。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">我的账号已经做废了 / 卡住了，还能救吗？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">这正是“账号兜底”要做的事：濒危账号诊断盘活，全程运营兜底陪伴。规划期会先 2V1 诊断你的现状，再决定走“人带货”还是“货带人”。做废了不代表没救，代表你之前是蒙着眼睛开车。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">“2V1 专属”是什么意思？平时怎么沟通？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">下载飞书后进入专属陪跑，两个人盯你一个账号。不怕你问得多，就怕你一句也不问。关键节点（第 30 天、第 60 天、最后一周）有 1V1 复盘和投放诊断，平时卡住了随时发，帮你看数据、找问题、给方案。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">陪跑是“替我做”还是“教我做”？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">教你做、带你做，不是替你做。你不拍视频、不写脚本、不投流，我帮不了你。但每一步我都陪你走一遍：你卡住我说“往这个方向调”，你做对我说“继续保持”，你做错我说“这里要改”。目标是 90 天后你不再依赖我。</div></div>
-      </div>
-      <div class="acc-item rv">
-        <button class="acc-head" type="button" aria-expanded="false"><span class="acc-t">90 天结束后，资料和方法还能用吗？</span><span class="acc-ic" aria-hidden="true">+</span></button>
-        <div class="acc-body"><div class="acc-inner">能。巩固期会把你跑通的全流程沉淀成你自己的专属 SOP 手册，资料库也是实时跟新、持续补充的。90 天是起点不是终点——你带走的是一套能反复使用的带货作战系统，不是一段时间的陪伴。</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 收口 CTA + 预约落点 ============ -->
-<section class="sec cta-sec" id="cta" data-theme="orange" aria-labelledby="t-cta">
-  <div class="wrap cta-wrap">
-    <p class="cta-kicker rv">招生中 · 剩 <b class="seats">7</b> 席</p>
-    <h2 class="cta-title rv" id="t-cta" style="--d:80ms">你不需要更多的技巧，<br>你需要一个带你走完 90 天的人。</h2>
-    <p class="cta-sub rv" style="--d:160ms">从今天起，卡住的时候有人指方向，做对的时候有人喊继续，做错的时候有人拉一把。</p>
-    <a class="cta-btn rv" style="--d:240ms" href="#cta-card">预约我的席位 <span class="cta-arr" aria-hidden="true">→</span></a>
-    <p class="cta-honest rv" style="--d:320ms">我不承诺你月入十万，我承诺你 90 天后，清楚地知道自己在做什么、为什么这么做。</p>
-
-    <!-- 预约落点卡片：上线时替换 data-copy 的微信号 与 qrcode.png -->
-    <div class="cta-card rv" id="cta-card" style="--d:400ms">
-      <div class="cta-card-copy">
-        <p class="ccc-k">下一步，加我</p>
-        <p class="ccc-t">扫码或复制微信号，备注【陪跑】，我发你本期入学须知与席位确认。</p>
-        <button class="cta-copy" type="button" data-copy="你的微信号" aria-label="复制微信号">
-          <span class="cc-id">你的微信号</span><!-- 替换为真实微信号 -->
-          <span class="cc-act"><span class="cc-act-txt">复制</span><span class="cc-act-ok" aria-hidden="true">已复制 ✓</span></span>
-        </button>
-      </div>
-      <div class="cta-card-qr">
-        <img class="cta-qr" src="qrcode.png" alt="扫码添加峰岚佳韵微信" width="148" height="148" loading="lazy" /><!-- 替换为真实二维码 -->
-        <span class="cta-qr-cap">微信扫一扫</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 页脚 FOOTER ============ -->
-<footer class="foot" id="foot" data-theme="ink">
-  <div class="wrap foot-grid">
-    <div class="foot-brand">
-      <img class="foot-logo" src="logo-white.svg" alt="峰岚佳韵" />
-      <p class="foot-slogan">90 天，盯到你出单。<br>不卖成功案例，只卖解决方案。</p>
-    </div>
-
-    <nav class="foot-nav" aria-label="页脚导航">
-      <a href="#pain">解决什么问题</a>
-      <a href="#learn">能学到什么</a>
-      <a href="#diff">和录播课的区别</a>
-      <a href="#flow">90 天流程</a>
-      <a href="#faq">常见顾虑</a>
-      <a href="#cta">预约席位</a>
-    </nav>
-
-    <div class="foot-meta">
-      <p class="foot-honest">陪跑是带你做，不是替你做。结果取决于你 90 天里拍了多少条、改了多少次。</p>
-      <p class="foot-legal">
-        © <span id="footYear">2026</span> 峰岚佳韵 · fljytrain.cn
-        <span class="foot-icp">京ICP备XXXXXXXX号</span><!-- 替换为真实备案号，无备案可删此行 -->
-      </p>
-    </div>
-  </div>
-
-  <div class="wrap foot-bar">
-    <span class="foot-status"><i class="foot-dot" aria-hidden="true"></i>招生中 · 剩 <b class="seats">7</b> 席</span>
-    <a class="foot-top" href="#hero" aria-label="回到顶部">回到顶部 <span aria-hidden="true">↑</span></a>
-  </div>
-
-  <noscript><p class="foot-noscript">提示：开启 JavaScript 可获得章节目录、滚动动效与一键复制等完整体验；未开启时本页内容仍可正常阅读。</p></noscript>
-</footer>
-
-<!-- 脚本：放 body 末尾，DOM 已就绪，无需 defer -->
 <script src="script.js"></script>
 </body>
 </html>
