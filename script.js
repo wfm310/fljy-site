@@ -96,6 +96,67 @@
     themeEls.push({ el: faq, theme: 'light' });
   }
 
+    /* ── 模块 10 · CTA 注册 ── */
+  var cta = $('#cta');
+  if (cta) {
+    chapters.push({ el: cta, id: 'cta', num: '10', txt: '最后一站' });
+    themeEls.push({ el: cta, theme: 'dark' });
+  }
+
+  /* ── 回到顶部 + 滚动进度环 ── */
+  var toTop = $('#toTop');
+  if (toTop) {
+    var prog = toTop.querySelector('.totop-prog');
+    var CIRC = 2 * Math.PI * 22;
+    prog.style.strokeDasharray = CIRC;
+    prog.style.strokeDashoffset = CIRC;
+    var totTick = false;
+    function totUpdate() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      prog.style.strokeDashoffset = CIRC * (1 - p);
+      toTop.classList.toggle('show', window.scrollY > 520);
+      totTick = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!totTick) { requestAnimationFrame(totUpdate); totTick = true; }
+    }, { passive: true });
+    totUpdate();
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ── 复制微信号 ── */
+  var wxBtn = $('#wxCopy');
+  if (wxBtn) {
+    wxBtn.addEventListener('click', function () {
+      var id = wxBtn.getAttribute('data-wx') || '';
+      var done = function () {
+        wxBtn.classList.add('copied');
+        var t = wxBtn.querySelector('.wx-txt');
+        if (t && !wxBtn.dataset.hold) {
+          wxBtn.dataset.hold = t.textContent;
+          t.textContent = '已复制 ✓ 去微信搜我';
+          setTimeout(function () {
+            t.textContent = wxBtn.dataset.hold;
+            delete wxBtn.dataset.hold;
+            wxBtn.classList.remove('copied');
+          }, 2000);
+        }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = id; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); done();
+      }
+    });
+  }
+
   var drawerLinks = $all('.nav-drawer-list a[data-target]');
   
 

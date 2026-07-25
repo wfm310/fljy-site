@@ -3018,3 +3018,299 @@ body.drawer-lock{ overflow:hidden; }
 
 /* ── 抽屉：第十项入场延迟 ── */
 .nav-drawer.open .nav-drawer-list a:nth-child(10){ transition-delay:.8s; }
+
+/* =========================================================
+   传送带 TICKER —— 橙色跑马灯（09 → CTA 的过渡）
+   ========================================================= */
+.ticker{
+  position:relative; z-index:3; overflow:hidden;
+  background:var(--orange); color:var(--ink);
+  padding:13px 0; border-top:1px solid rgba(21,17,14,.15);
+}
+.ticker-track{ display:flex; width:max-content; animation:tickMove 32s linear infinite; }
+.ticker:hover .ticker-track{ animation-play-state:paused; }
+.ticker-group{ display:flex; align-items:center; gap:30px; padding-right:30px; flex:none; }
+.ticker-group span{
+  font-family:'Sora','Noto Sans SC',sans-serif; font-size:13px; font-weight:800;
+  letter-spacing:.2em; white-space:nowrap;
+}
+.ticker-group i{ font-style:normal; font-size:11px; opacity:.55; }
+@keyframes tickMove{ to{ transform:translateX(-50%); } }
+
+/* =========================================================
+   【模块 10】最后一站 CTA —— 登机口最终广播（墨黑）
+   ========================================================= */
+.cta{
+  position:relative; z-index:2; overflow:hidden;
+  background:var(--ink); color:var(--cream);
+  padding:clamp(76px,11vh,130px) 0 clamp(88px,12vh,140px);
+}
+#cta{ scroll-margin-top:96px; }
+.cta-bg{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+.cta-grid{
+  position:absolute; inset:0;
+  background:linear-gradient(rgba(244,237,227,.02) 1px,transparent 1px),
+             linear-gradient(90deg,rgba(244,237,227,.02) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+.cta-grain{
+  position:absolute; inset:0; opacity:.045; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.cta-glow{
+  position:absolute; bottom:-160px; left:50%; transform:translateX(-50%);
+  width:min(860px,110vw); height:420px; border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(255,107,53,.14), transparent 70%);
+}
+.cta .wrap{ position:relative; z-index:1; }
+
+/* ── ① 旅程确认 ── */
+.cta-head{ margin-bottom:clamp(40px,6.4vh,60px); }
+.cta-kicker{
+  display:flex; align-items:center; gap:12px; margin-bottom:clamp(20px,3.4vh,32px);
+  font-family:'Sora','Noto Sans SC',sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:.3em; color:rgba(244,237,227,.5);
+}
+.cta-kicker-tick{ width:34px; height:2px; background:var(--orange); border-radius:2px; transform:scaleX(0); transform-origin:left; transition:transform .7s var(--ease) .15s; }
+.cta-kicker.in .cta-kicker-tick{ transform:scaleX(1); }
+.cta-l1{
+  font-family:'Sora','Noto Sans SC',sans-serif; font-size:clamp(13px,1.8vw,15px);
+  letter-spacing:.14em; color:rgba(244,237,227,.5); margin-bottom:18px;
+}
+.cta-l2{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:clamp(38px,6.4vw,76px); line-height:1.18; color:var(--cream); }
+.cta-em{ font-style:normal; position:relative; z-index:0; white-space:nowrap; }
+.cta-em::before{
+  content:""; position:absolute; z-index:-1; left:-.06em; right:-.06em; bottom:.06em; height:.4em;
+  background:linear-gradient(100deg, var(--orange-deep), var(--orange)); border-radius:3px;
+  transform:skewX(-8deg) scaleX(0); transform-origin:left; transition:transform .8s var(--ease) .7s;
+}
+.cta-l2.in .cta-em::before{ transform:skewX(-8deg) scaleX(1); }
+.cta-l3{ margin-top:18px; font-size:clamp(16px,2.4vw,22px); font-weight:700; color:rgba(244,237,227,.68); }
+
+/* ── ② 登机牌 ── */
+.tk-wrap{ max-width:760px; margin:0 auto; animation:tkFloat 7s ease-in-out infinite; }
+@keyframes tkFloat{ 50%{ transform:translateY(-9px); } }
+
+.ticket{
+  position:relative; display:grid; grid-template-columns:1fr 168px;
+  background:var(--cream); color:var(--ink); border-radius:10px;
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.65), 0 0 0 1px rgba(244,237,227,.12);
+  transition:transform .45s var(--ease), box-shadow .45s;
+}
+.ticket:hover{
+  transform:rotate(-1.2deg) translateY(-5px);
+  box-shadow:0 44px 90px -34px rgba(0,0,0,.75), 0 0 0 1px rgba(255,107,53,.4);
+}
+/* 撕票虚线 + 缺口 */
+.tk-perf{ position:absolute; top:0; bottom:0; left:calc(100% - 168px); border-left:2px dashed rgba(21,17,14,.28); }
+.ticket::before,.ticket::after{
+  content:""; position:absolute; width:22px; height:22px; border-radius:50%;
+  background:var(--ink); left:calc(100% - 168px - 11px);
+}
+.ticket::before{ top:-11px; } .ticket::after{ bottom:-11px; }
+
+.tk-main{ padding:clamp(20px,3vw,28px) clamp(22px,3.4vw,32px); }
+.tk-row1{ display:flex; justify-content:space-between; align-items:center; margin-bottom:clamp(18px,3vh,26px); }
+.tk-brand{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:13px; letter-spacing:.14em; color:var(--ink); }
+.tk-class{
+  font-family:'Sora',sans-serif; font-style:italic; font-weight:800; font-size:10px;
+  letter-spacing:.28em; color:var(--orange-deep);
+  padding:4px 10px; border:1px solid rgba(200,70,20,.4); border-radius:3px;
+}
+.tk-route{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px; }
+.tk-city small{
+  display:block; font-family:'Sora',sans-serif; font-style:italic; font-weight:700;
+  font-size:10px; letter-spacing:.22em; color:rgba(21,17,14,.45); margin-bottom:5px;
+}
+.tk-city b{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:clamp(17px,2.6vw,23px); color:var(--ink); }
+.tk-to{ text-align:right; }
+.tk-mid{ display:flex; align-items:center; gap:8px; padding:0 4px; min-width:110px; }
+.tk-line{ flex:1; border-top:2px dashed rgba(21,17,14,.3); }
+.tk-plane-ico{ color:var(--orange-deep); font-size:16px; }
+.tk-meta{
+  display:grid; grid-template-columns:repeat(4,auto); gap:10px 26px; justify-content:start;
+  margin-top:clamp(18px,3vh,26px); padding-top:16px;
+  border-top:1px solid rgba(21,17,14,.14);
+}
+.tk-meta small{
+  display:block; font-family:'Sora','Noto Sans SC',sans-serif; font-size:10px;
+  letter-spacing:.2em; color:rgba(21,17,14,.45); margin-bottom:4px;
+}
+.tk-meta b{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:14px; color:var(--ink); white-space:nowrap; }
+.seat-dot{
+  display:inline-block; width:7px; height:7px; border-radius:50%;
+  background:var(--orange); margin-right:6px; vertical-align:1px;
+  animation:seatPulse 1.6s ease-out infinite;
+}
+@keyframes seatPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,107,53,.5); } 100%{ box-shadow:0 0 0 9px rgba(255,107,53,0); } }
+
+/* 票根 */
+.tk-stub{
+  position:relative; display:flex; flex-direction:column; align-items:flex-start;
+  padding:clamp(20px,3vw,26px) 20px; background:rgba(21,17,14,.035);
+  border-radius:0 10px 10px 0;
+}
+.tk-stub small{ font-family:'Sora','Noto Sans SC',sans-serif; font-size:10px; letter-spacing:.24em; color:rgba(21,17,14,.5); }
+.tk-price{
+  font-family:'Sora',sans-serif!important; font-style:italic; font-weight:800;
+  font-size:clamp(26px,3.6vw,34px); color:var(--orange-deep); line-height:1.15; margin:6px 0 2px;
+}
+.tk-day{ font-size:11px; color:rgba(21,17,14,.55); }
+.tk-barcode{
+  margin-top:auto; width:100%; height:34px; padding-top:14px;
+  background:repeating-linear-gradient(90deg,
+    var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 7px,
+    transparent 7px 9px, var(--ink) 9px 10px, transparent 10px 14px);
+  background-size:100% 34px; background-position:bottom; background-repeat:no-repeat;
+}
+
+/* 盖章 */
+.tk-stamp{
+  position:absolute; top:-16px; right:22%;
+  padding:7px 14px; border:3px solid #E0472F; border-radius:6px;
+  color:#E0472F; font-family:'Noto Sans SC',sans-serif; font-weight:900;
+  font-size:14px; letter-spacing:.24em;
+  background:rgba(224,71,47,.05); mix-blend-mode:multiply;
+  opacity:0; transform:rotate(-8deg);
+}
+.rv.in .tk-stamp{ animation:stampIn .5s var(--ease-spring) .75s both; }
+@keyframes stampIn{
+  0%{ opacity:0; transform:rotate(-14deg) scale(1.9); }
+  62%{ opacity:1; transform:rotate(-7deg) scale(.94); }
+  100%{ opacity:1; transform:rotate(-8deg) scale(1); }
+}
+
+/* ── ③ 行动区 ── */
+.cta-actions{
+  max-width:760px; margin:clamp(36px,5.6vh,52px) auto 0;
+  display:flex; align-items:flex-start; justify-content:space-between; gap:28px;
+}
+.cta-act-l{ flex:1 1 380px; }
+.cta-act-r{ flex:0 1 260px; display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; padding-top:6px; }
+
+.cta-btn{
+  position:relative; overflow:hidden; cursor:pointer; border:none;
+  display:inline-flex; flex-direction:column; align-items:flex-start; gap:7px;
+  padding:20px 34px; border-radius:8px; text-align:left;
+  background:linear-gradient(135deg, var(--orange), var(--orange-deep)); color:#fff;
+  box-shadow:0 20px 48px -20px rgba(255,107,53,.65);
+  transition:transform .3s var(--ease), box-shadow .3s, background .4s;
+}
+.cta-btn:hover{ transform:translateY(-3px); box-shadow:0 28px 60px -22px rgba(255,107,53,.8); }
+.cta-btn:active{ transform:translateY(-1px) scale(.99); }
+.cta-btn::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.28) 50%, transparent 60%);
+  transform:translateX(-130%); transition:transform .65s var(--ease);
+}
+.cta-btn:hover::after{ transform:translateX(130%); }
+.cta-btn-main{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:clamp(18px,2.6vw,23px); letter-spacing:.04em; }
+.cta-btn-sub{ font-family:'Sora','Noto Sans SC',sans-serif; font-size:12px; letter-spacing:.12em; opacity:.85; }
+.cta-btn.copied{ background:linear-gradient(135deg, #23A06B, #166B46); box-shadow:0 20px 48px -20px rgba(31,138,91,.7); }
+
+.cta-note{ margin-top:16px; font-size:13.5px; line-height:1.8; color:rgba(244,237,227,.55); }
+.cta-note b{ color:var(--orange); font-weight:900; }
+
+.cta-chip{
+  padding:6px 13px; border-radius:999px;
+  border:1px solid rgba(244,237,227,.18); background:rgba(244,237,227,.04);
+  font-size:12px; font-weight:700; letter-spacing:.04em; color:rgba(244,237,227,.72);
+  transition:border-color .25s, color .25s, transform .25s var(--ease);
+}
+.cta-chip:hover{ border-color:rgba(255,107,53,.5); color:var(--orange); transform:translateY(-2px); }
+.cta-back{
+  width:100%; margin-top:6px; font-size:12px; letter-spacing:.08em;
+  color:rgba(244,237,227,.4); border-bottom:1px dashed rgba(244,237,227,.3);
+  align-self:flex-start; padding-bottom:2px; transition:color .25s, border-color .25s;
+}
+.cta-back:hover{ color:var(--orange); border-color:var(--orange); }
+
+/* =========================================================
+   页脚 FOOTER
+   ========================================================= */
+.site-foot{
+  position:relative; z-index:2; background:#12100E; color:var(--cream);
+  border-top:1px solid rgba(244,237,227,.08);
+  padding:clamp(48px,7vh,72px) 0 26px;
+}
+.foot-top{
+  display:grid; grid-template-columns:1.2fr 1.6fr; gap:clamp(28px,5vw,60px);
+  padding-bottom:clamp(32px,5vh,44px); border-bottom:1px solid rgba(244,237,227,.08);
+}
+.foot-logo-row{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.foot-logo{
+  display:inline-grid; place-items:center; width:44px; height:44px; border-radius:6px;
+  background:var(--orange); color:var(--ink);
+  font-family:'Sora',sans-serif; font-style:italic; font-weight:800; font-size:17px;
+  transition:transform .3s var(--ease-spring);
+}
+.foot-logo:hover{ transform:rotate(-8deg) scale(1.08); }
+.foot-name{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:18px; }
+.foot-tag{ font-family:'Noto Sans SC',sans-serif; font-weight:900; font-size:15px; color:var(--orange); margin-bottom:8px; }
+.foot-sub{ font-size:12.5px; letter-spacing:.06em; color:rgba(244,237,227,.4); }
+
+.foot-nav{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.foot-col-t{
+  font-family:'Sora','Noto Sans SC',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.26em; color:rgba(244,237,227,.35); margin-bottom:12px;
+}
+.foot-col a{
+  display:block; padding:5px 0; font-size:13px; color:rgba(244,237,227,.62);
+  transition:color .25s, transform .25s var(--ease);
+}
+.foot-col a:hover{ color:var(--orange); transform:translateX(4px); }
+
+.foot-bot{
+  display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  padding-top:22px; font-size:12px; letter-spacing:.06em; color:rgba(244,237,227,.32);
+}
+.foot-motto{ color:rgba(244,237,227,.45); font-weight:700; }
+
+/* =========================================================
+   回到顶部 · 滚动进度环
+   ========================================================= */
+.totop{
+  position:fixed; right:20px; bottom:20px; z-index:60;
+  width:52px; height:52px; border-radius:50%; cursor:pointer;
+  background:var(--ink); border:1px solid rgba(244,237,227,.14);
+  display:grid; place-items:center;
+  box-shadow:0 10px 26px -12px rgba(0,0,0,.6);
+  opacity:0; transform:translateY(18px); pointer-events:none;
+  transition:opacity .4s var(--ease), transform .4s var(--ease), background .3s;
+}
+.totop.show{ opacity:1; transform:none; pointer-events:auto; }
+.totop:hover{ background:#262019; }
+.totop:hover .totop-arr{ transform:translateY(-3px); }
+.totop-ring{ position:absolute; inset:0; transform:rotate(-90deg); }
+.totop-ring circle{ fill:none; stroke-width:2.5; }
+.totop-track{ stroke:rgba(244,237,227,.12); }
+.totop-prog{ stroke:var(--orange); stroke-linecap:round; }
+.totop-arr{ color:var(--cream); font-size:17px; font-weight:700; transition:transform .3s var(--ease); }
+
+/* ── 收尾响应式 ── */
+@media (max-width:820px){
+  .cta-actions{ flex-direction:column; }
+  .cta-act-r{ padding-top:0; }
+  .foot-top{ grid-template-columns:1fr; }
+}
+@media (max-width:640px){
+  .ticket{ grid-template-columns:1fr; }
+  .tk-perf,.ticket::before,.ticket::after{ display:none; }
+  .tk-stub{ border-radius:0 0 10px 10px; border-top:2px dashed rgba(21,17,14,.28); }
+  .tk-barcode{ height:26px; }
+  .tk-stamp{ right:16px; top:-13px; font-size:12px; padding:5px 10px; }
+  .tk-mid{ min-width:64px; }
+  .tk-meta{ grid-template-columns:repeat(2,auto); }
+  .cta-btn{ width:100%; }
+  .foot-nav{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ── 收尾减弱动画 ── */
+@media (prefers-reduced-motion:reduce){
+  .ticker-track,.tk-wrap,.seat-dot{ animation:none!important; }
+  .tk-stamp{ opacity:1!important; transform:rotate(-8deg)!important; animation:none!important; }
+  .cta-btn::after{ display:none; }
+}
+
+/* ── 抽屉：第十一项入场延迟 ── */
+.nav-drawer.open .nav-drawer-list a:nth-child(11){ transition-delay:.88s; }
