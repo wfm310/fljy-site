@@ -1,289 +1,477 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>抖音短视频带货做了很久不出单，问题到底出在哪？5 个卡点自查 - 峰岚佳韵</title>
+<meta name="description" content="日更也勤快、视频也发了，后台成交还是 0？多数时候不是你不努力，是某一步走歪了。陪跑教练拆解 5 个最常见的"不出单"卡点，照着自查，对号入座。" />
+<link rel="canonical" href="https://fljytrain.cn/out-no-order.html" />
 
-  <!-- 头条收录推送JS 沿用首页配置 -->
-  <script>
-(function(){
-var el = document.createElement("script");
-el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?caa2ae6c626daacee411cb8e3957a26a3ac97c10958d70d20d7df3fed50c33dfbc434964556b7d7129e9b750ed197d397efd7b0c6c715c1701396e1af40cec962b8d7c8c6655c9b00211740aa8a98e2e";
-el.id = "ttzz";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(el, s);
-})(window)
-</script>
+<!-- 这页自己的社交卡片：标题/描述是"干货文"口吻，图共用品牌橙图 -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fljytrain.cn/out-no-order.html" />
+<meta property="og:title" content="抖音短视频带货做了很久不出单，问题到底出在哪？" />
+<meta property="og:description" content="日更也勤快、视频也发了，后台成交还是 0？5 个最常见的卡点，照着自查，对号入座。" />
+<meta property="og:image" content="https://fljytrain.cn/og-cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="峰岚佳韵" />
 
-  <!-- 字节时间标签 -->
-  <meta property="bytedance:published_time" content="2026-07-28T10:00:00+08:00" />
-  <meta property="bytedance:updated_time" content="2026-07-28T10:00:00+08:00" />
+<link rel="icon" href="https://fljytrain.cn/og-cover.png">
+<link rel="apple-touch-icon" href="https://fljytrain.cn/og-cover.png">
 
-  <!-- 统一主域名 -->
-  <link rel="canonical" href="https://fljytrain.cn/blog/out-no-order.html" />
-  <!-- 站点验证标签 -->
-  <meta name="bytedance-verification-code" content="dHmdlxs4tfPzZgdVgK3D" />
-  <meta name="msvalidate.01" content="B22CA4D837A7EFBE70AE7896F3863DC6" />
+<!-- 英文/数字 display 字体：异步加载，加载失败也不影响（中文走系统栈） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,500&display=swap"></noscript>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <!-- 页面SEO核心标题+描述（百度抓取核心） -->
-  <title>抖音短视频带货做了很久不出单，问题到底出在哪？|峰岚佳韵</title>
-  <meta name="description" content="很多新手自学抖音带货数月始终无法出单，播放量低迷、投流亏钱、账号越做越焦虑，盘点7个绝大多数人都会踩的核心原因，帮你找准带货卡点。" />
+<!-- 关键：尽早标记 js，让"无 JS 时内容默认可见"，避免白屏 -->
+<script>document.documentElement.classList.add('js');</script>
 
-  <meta name="theme-color" content="#FF6B35" />
-  <meta name="color-scheme" content="light" />
-  <meta name="format-detection" content="telephone=no, address=no, email=no" />
+<style>
+  :root{
+    --ink:#16120e;            /* 焦墨咖底，不是纯黑 */
+    --ink-2:#1e1712;          /* 抬升一层 */
+    --ink-3:#271d16;          /* 卡片/批注条 */
+    --paper:#ece3d4;          /* 暖白正文 */
+    --paper-dim:#a99a85;      /* 次要文字 */
+    --paper-faint:#6f6353;    /* 更弱 */
+    --amber:#f59124;          /* 焦橙主强调，暖，不霓虹 */
+    --amber-bright:#ffab3d;
+    --amber-soft:rgba(245,145,36,.16);
+    --vermilion:#e2543b;      /* 批注赭红 = "红笔" */
+    --vermilion-soft:rgba(226,84,59,.14);
+    --line:rgba(236,227,212,.07);
+    --line-2:rgba(236,227,212,.13);
+    --read:720px;             /* 阅读列宽 */
+    --bar-h:54px;
+    --serif-cn:"Songti SC","STSong","Source Han Serif SC","Noto Serif SC","SimSun",serif;
+    --sans-cn:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+    --display:"Fraunces",Georgia,"Times New Roman",serif;
+  }
 
-  <!-- 多尺寸图标 -->
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
-  <link rel="manifest" href="../manifest.json" />
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans-cn);
+    font-size:18px;
+    line-height:1.9;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
 
-  <!-- OG社交分享卡片 -->
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="峰岚佳韵" />
-  <meta property="og:title" content="抖音短视频带货做了很久不出单，问题到底出在哪？" />
-  <meta property="og:description" content="盘点新手抖音带货不出单7大核心卡点，告别盲目摸索、内耗焦虑" />
-  <meta property="og:url" content="https://fljytrain.cn/blog/out-no-order.html" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:image" content="https://fljytrain.cn/og-cover.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  /* —— 分层环境背景：方格复盘纸 + 顶部台灯光 + 极淡噪点 —— */
+  body::before{ /* 方格纸 */
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 0%,#000 35%,transparent 92%);
+            mask-image:radial-gradient(120% 90% at 50% 0%,#000 35%,transparent 92%);
+  }
+  body::after{ /* 台灯暖光，缓慢呼吸 */
+    content:"";position:fixed;left:50%;top:-26vh;z-index:-2;pointer-events:none;
+    width:120vw;height:80vh;transform:translateX(-50%);
+    background:radial-gradient(closest-side,rgba(245,145,36,.16),rgba(245,145,36,.05) 45%,transparent 72%);
+    animation:breathe 11s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{opacity:.7}50%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){body::after{animation:none}}
 
-  <!-- Twitter卡片 -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="抖音短视频带货做了很久不出单，问题到底出在哪？" />
-  <meta name="twitter:description" content="盘点新手抖音带货不出单7大核心卡点，告别盲目摸索、内耗焦虑" />
-  <meta name="twitter:image" content="https://fljytrain.cn/og-cover.png" />
+  a{color:inherit}
+  ::selection{background:var(--amber);color:#1a1206}
 
-  <!-- 字体加载 完全沿用首页 -->
-  <link rel="preconnect" href="https://fonts.loli.net" crossorigin />
-  <link rel="preconnect" href="https://fonts.loli.net" />
-  <link rel="preconnect" href="https://fonts.loli.net" crossorigin />
-<link rel="preload" as="style"
-      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" />
-<link rel="stylesheet"
-      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
-      media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet"
-      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
+  /* —— 阅读进度条 —— */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+    background:linear-gradient(90deg,var(--vermilion),var(--amber));
+    box-shadow:0 0 14px rgba(245,145,36,.5);transition:width .08s linear}
 
-  <!-- 全局样式引入 -->
-  <link rel="stylesheet" href="../style.css" />
-  <noscript><style>.rv{opacity:1!important;transform:none!important}.live-dot{animation:none!important}</style></noscript>
+  /* —— 吸顶品牌条 —— */
+  .topbar{position:sticky;top:0;z-index:50;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(16px,4vw,40px);
+    background:rgba(22,18,14,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+  .brand b{font-family:var(--serif-cn);font-weight:700;font-size:17px;letter-spacing:.04em;color:var(--paper)}
+  .brand span{font-size:12px;color:var(--paper-faint);letter-spacing:.18em;text-transform:uppercase}
+  .home{font-size:13px;color:var(--paper-dim);text-decoration:none;letter-spacing:.04em;
+    padding:6px 12px;border:1px solid var(--line-2);border-radius:2px;transition:.25s}
+  .home:hover{color:var(--ink);background:var(--amber);border-color:var(--amber)}
 
-  <style>
-    /* 博客页面专属简易排版样式，适配原有设计调性 */
-    .blog-wrap {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 120px 24px 60px;
-      color: #222;
-      line-height: 1.85;
-    }
-    .blog-header {
-      margin-bottom: 40px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 20px;
-    }
-    .blog-date {
-      font-size: 14px;
-      opacity: 0.65;
-      margin-bottom: 12px;
-    }
-    .blog-title {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.4;
-      font-family: "Noto Sans SC", sans-serif;
-    }
-    .blog-content h2 {
-      font-size: 22px;
-      margin: 36px 0 16px;
-      font-weight: 600;
-    }
-    .blog-content p {
-      font-size: 17px;
-      margin-bottom: 18px;
-    }
-    .blog-content ul {
-      padding-left: 22px;
-      margin-bottom: 20px;
-    }
-    .blog-content li {
-      margin-bottom: 12px;
-      font-size: 17px;
-    }
-    .blog-conclusion {
-      margin-top: 50px;
-      padding: 28px;
-      background: #fff5ef;
-      border-radius: 12px;
-    }
-    .blog-back-home {
-      display: inline-block;
-      margin-top: 30px;
-      color: #ff6b35;
-      font-weight: 500;
-    }
-  </style>
+  /* —— HERO：诊断单头，左对齐，标题被"圈画" —— */
+  .hero{max-width:var(--read);margin:0 auto;padding:clamp(48px,9vw,96px) clamp(20px,5vw,28px) 8px}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);
+    font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:22px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--vermilion)}
+  h1{font-family:var(--sans-cn);font-weight:800;line-height:1.18;letter-spacing:-.01em;
+    font-size:clamp(30px,6.4vw,52px);color:var(--paper)}
+  h1 .circle{position:relative;color:var(--vermilion);white-space:nowrap;padding:0 .08em}
+  /* 手绘圈 */
+  h1 .circle::after{content:"";position:absolute;inset:-.12em -.06em -.04em;
+    border:2.5px solid var(--vermilion);border-radius:62% 38% 55% 45%/55% 48% 52% 45%;
+    transform:rotate(-2deg);opacity:.85;pointer-events:none}
+  .lede{margin-top:26px;font-family:var(--serif-cn);font-size:clamp(17px,2.5vw,20px);
+    line-height:1.85;color:var(--paper-dim);max-width:60ch}
+  .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--paper-faint);
+    letter-spacing:.04em;border-top:1px dashed var(--line-2);padding-top:16px}
+  .meta i{font-style:normal;color:var(--amber)}
+
+  /* —— 卡点 chip 导航 + scrollspy —— */
+  .chips{position:sticky;top:var(--bar-h);z-index:40;
+    background:linear-gradient(var(--ink) 70%,transparent);
+    padding:14px clamp(20px,5vw,28px) 18px}
+  .chips-inner{max-width:var(--read);margin:0 auto;display:flex;gap:8px;overflow-x:auto;
+    scrollbar-width:none;-ms-overflow-style:none;padding-bottom:2px}
+  .chips-inner::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;font-size:13px;color:var(--paper-dim);text-decoration:none;
+    padding:7px 13px;border:1px solid var(--line-2);border-radius:999px;white-space:nowrap;
+    transition:.22s;display:inline-flex;align-items:center;gap:7px}
+  .chip .n{font-family:var(--display);font-size:12px;color:var(--paper-faint)}
+  .chip:hover{color:var(--paper);border-color:var(--amber)}
+  .chip.active{color:var(--ink);background:var(--amber);border-color:var(--amber);font-weight:600}
+  .chip.active .n{color:rgba(26,18,6,.6)}
+
+  /* —— 正文 —— */
+  article{max-width:var(--read);margin:0 auto;padding:8px clamp(20px,5vw,28px) 0}
+  .intro{font-size:clamp(17px,2.4vw,19px);color:var(--paper);margin:18px 0 8px}
+  .intro p+p{margin-top:14px}
+
+  /* 卡点块 */
+  .point{position:relative;padding:clamp(40px,7vw,72px) 0 8px;
+    border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + 64px)}
+  .point:first-of-type{border-top:none}
+  .ghost{position:absolute;top:clamp(20px,4vw,40px);right:-4px;font-family:var(--display);
+    font-weight:900;font-size:clamp(96px,20vw,188px);line-height:.8;color:transparent;
+    -webkit-text-stroke:1.5px rgba(236,227,212,.06);pointer-events:none;user-select:none;z-index:0}
+  .point .tag{position:relative;z-index:1;font-family:var(--display);font-size:12px;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px}
+  h2{position:relative;z-index:1;font-family:var(--sans-cn);font-weight:800;
+    font-size:clamp(22px,4.4vw,31px);line-height:1.3;letter-spacing:-.005em;color:var(--paper);max-width:18ch}
+  .point .body{position:relative;z-index:1;margin-top:18px}
+  .point .body p{margin:0 0 14px;color:var(--paper)}
+  .lbl{display:inline-block;font-family:var(--serif-cn);font-size:13px;font-weight:700;
+    letter-spacing:.12em;padding:2px 9px;margin:18px 0 8px;border-radius:2px}
+  .lbl.sym{color:var(--vermilion);background:var(--vermilion-soft)}
+  .lbl.root{color:var(--paper-dim);background:rgba(236,227,212,.06)}
+  .lbl.fix{color:var(--amber);background:var(--amber-soft)}
+  /* 处方 = 批注条 */
+  .rx{font-family:var(--serif-cn);font-size:clamp(16px,2.3vw,18px);line-height:1.85;
+    color:var(--paper);background:var(--ink-3);border-left:3px solid var(--amber);
+    padding:14px 18px;margin:8px 0 4px;border-radius:0 4px 4px 0}
+
+  /* 荧光笔高亮：滚到才画出来 */
+  .mark{background-image:linear-gradient(120deg,var(--amber-soft),rgba(245,145,36,.28));
+    background-repeat:no-repeat;background-position:0 86%;background-size:100% 44%;
+    padding:0 .12em;border-radius:2px;color:var(--paper)}
+  html.js .mark{background-size:0% 44%;transition:background-size .8s cubic-bezier(.2,.7,.2,1)}
+  html.js .mark.in{background-size:100% 44%}
+
+  /* 对号入座 复选 */
+  .check{position:relative;z-index:1;display:inline-flex;align-items:center;gap:11px;
+    margin-top:22px;cursor:pointer;user-select:none;font-size:14px;color:var(--paper-dim);
+    padding:9px 15px;border:1px dashed var(--line-2);border-radius:3px;transition:.22s;background:transparent;
+    font-family:var(--sans-cn)}
+  .check:hover{border-color:var(--amber);color:var(--paper)}
+  .box{width:20px;height:20px;flex:0 0 auto;border:2px solid var(--paper-faint);border-radius:4px;
+    display:grid;place-items:center;transition:.22s}
+  .box svg{width:13px;height:13px;stroke:var(--ink);stroke-width:3;fill:none;
+    stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .3s ease .05s}
+  .check.on{color:var(--ink);background:var(--vermilion);border-style:solid;border-color:var(--vermilion);font-weight:600}
+  .check.on .box{background:var(--paper);border-color:var(--paper)}
+  .check.on .box svg{stroke-dashoffset:0}
+
+  /* —— 自查结果动态条 —— */
+  .tally{max-width:var(--read);margin:30px auto 0;padding:0 clamp(20px,5vw,28px)}
+  .tally-card{border:1px solid var(--line-2);border-radius:6px;background:var(--ink-2);
+    padding:20px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;
+    transition:border-color .3s,background .3s}
+  .tally-card.hot{border-color:var(--vermilion);background:linear-gradient(var(--ink-2),rgba(226,84,59,.07))}
+  .tally-num{font-family:var(--display);font-weight:900;font-size:46px;line-height:1;color:var(--amber);min-width:1.4ch;text-align:center}
+  .tally-num.bump{animation:bump .4s ease}
+  @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.35)}100%{transform:scale(1)}}
+  .tally-txt{flex:1 1 240px;font-size:15px;line-height:1.7;color:var(--paper-dim)}
+  .tally-txt b{color:var(--paper);font-weight:700}
+  .tally-cta{font-size:14px;color:var(--ink);background:var(--amber);text-decoration:none;
+    padding:9px 16px;border-radius:3px;font-weight:600;white-space:nowrap;transition:.22s}
+  .tally-cta:hover{background:var(--amber-bright);transform:translateY(-1px)}
+
+  /* —— 文末 CTA：下一步处方笺 —— */
+  .cta{max-width:var(--read);margin:clamp(48px,9vw,88px) auto 0;padding:0 clamp(20px,5vw,28px)}
+  .cta-card{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:8px;
+    background:var(--ink-3);padding:clamp(28px,6vw,48px)}
+  .cta-card::before{content:"";position:absolute;right:-30%;top:-60%;width:80%;height:180%;
+    background:radial-gradient(closest-side,rgba(245,145,36,.16),transparent 70%);pointer-events:none}
+  .cta .rx-tag{font-family:var(--display);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--vermilion)}
+  .cta h3{font-family:var(--sans-cn);font-weight:800;font-size:clamp(24px,5vw,34px);line-height:1.25;
+    margin:12px 0 14px;color:var(--paper);position:relative}
+  .cta p{color:var(--paper-dim);font-size:clamp(16px,2.3vw,18px);line-height:1.85;max-width:46ch;position:relative}
+  .cta .go{display:inline-flex;align-items:center;gap:10px;margin-top:26px;position:relative;
+    font-size:clamp(16px,2.4vw,18px);font-weight:700;color:var(--ink);background:var(--amber);
+    text-decoration:none;padding:15px 26px;border-radius:4px;transition:.25s}
+  .cta .go:hover{background:var(--amber-bright);transform:translateY(-2px);box-shadow:0 12px 30px rgba(245,145,36,.25)}
+  .cta .go .arr{transition:transform .25s}
+  .cta .go:hover .arr{transform:translateX(5px)}
+
+  footer{max-width:var(--read);margin:0 auto;padding:40px clamp(20px,5vw,28px) 64px;
+    border-top:1px solid var(--line);margin-top:clamp(40px,7vw,72px);
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--paper-faint);letter-spacing:.04em}
+  footer a{color:var(--paper-dim);text-decoration:none}
+  footer a:hover{color:var(--amber)}
+
+  /* —— reveal：无 JS 默认可见，有 JS 才先藏后现 —— */
+  html.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  html.js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html.js .reveal{opacity:1;transform:none;transition:none}
+    html.js .mark{background-size:100% 44%!important;transition:none}
+  }
+</style>
 </head>
 <body>
-<!-- 顶部导航 完全复用首页 -->
-<header class="nav" id="nav" aria-label="主导航">
-  <div class="nav-progress" aria-hidden="true"><span id="navProgressBar"></span></div>
-  <div class="nav-island" id="navIsland">
-    <a class="nav-brand" href="../index.html" aria-label="峰岚佳韵 首页">
-      <img class="nav-logo nav-logo--color" src="../logo-color.svg" alt="峰岚佳韵" />
-      <img class="nav-logo nav-logo--white" src="../logo-white.svg" alt="" aria-hidden="true" />
-    </a>
-    <button class="nav-chapter" id="navChapter" aria-label="打开章节目录" aria-controls="navDrawer" aria-expanded="false">
-      <span class="nav-chapter-num">博客</span>
-      <span class="nav-chapter-txt">带货干货文章</span>
-      <svg class="nav-chapter-arr" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-        <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav-right">
-      <span class="nav-status" title="本期招生状态">
-        <i class="nav-dot" aria-hidden="true"></i>
-        <span class="nav-status-txt">招生中 · 剩 <b class="seats">7</b> 席</span>
-      </span>
-      <button class="nav-cta" id="navWx" type="button" data-wx="JyDdhrj" aria-label="复制微信号 JyDdhrj">
-        <span>找我聊两句</span>
-        <svg class="nav-cta-arr" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <button class="nav-burger" id="navBurger" aria-label="打开章节目录" aria-expanded="false" aria-controls="navDrawer">
-        <span></span><span></span>
-      </button>
-    </div>
-  </div>
+
+<!-- 兜底图：给"不读 og 只抓首图"的客户端，与落地页策略一致 -->
+<img src="https://fljytrain.cn/og-cover.png" alt="" width="1" height="1"
+     style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" aria-hidden="true">
+
+<div id="progress"></div>
+
+<header class="topbar">
+  <a class="brand" href="https://fljytrain.cn/"><b>峰岚佳韵</b><span>带货复盘笔记</span></a>
+  <a class="home" href="https://fljytrain.cn/">← 回主页</a>
 </header>
-<!-- 抽屉菜单、遮罩沿用首页代码 -->
-<div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
-<div class="nav-drawer" id="navDrawer" inert aria-hidden="true">
-  <div class="nav-drawer-head">
-    <img class="nav-drawer-logo" src="../logo-white.svg" alt="峰岚佳韵" />
-    <button class="nav-drawer-close" id="navDrawerClose" aria-label="关闭目录"><span></span><span></span></button>
+
+<section class="hero">
+  <span class="kicker">Diagnosis · 不出单自查</span>
+  <h1>抖音短视频带货做了很久<br><span class="circle">不出单</span>，问题到底出在哪？</h1>
+  <p class="lede">先别急着否定自己。我陪跑过太多卡在这一步的人——多数时候，<b style="color:var(--paper)">不是你不努力、不是你不适合</b>，而是整套打法里某一环悄悄走歪了，你自己天天盯着号，反而看不见。下面 5 个地方，你对一下。</p>
+  <div class="meta">
+    <span><i>约 6 分钟</i> 读完</span>
+    <span><i>5 个</i> 高频卡点</span>
+    <span>适合：发了几个月、还没稳定出单的人</span>
   </div>
-  <nav class="nav-drawer-list" aria-label="网站导航">
-    <a href="../index.html"><span class="dl-num">首页</span><span class="dl-txt">主页</span></a>
-    <a href="#blog-list"><span class="dl-num">博客</span><span class="dl-txt">全部干货文章</span></a>
-    <a href="../index.html#pain"><span class="dl-num">01</span><span class="dl-txt">痛点诊断</span></a>
-    <a href="../index.html#skill"><span class="dl-num">02</span><span class="dl-txt">能力体系</span></a>
-    <a href="../index.html#cta"><span class="dl-num">10</span><span class="dl-txt">报名咨询</span></a>
-  </nav>
-  <div class="nav-drawer-foot">
-    <span class="nav-status on-dark">
-      <i class="nav-dot" aria-hidden="true"></i>
-      <span>招生中 · 剩 <b class="seats">7</b> 席</span>
-    </span>
-    <button class="drawer-cta" id="drawerWx" type="button" data-wx="JyDdhrj">复制微信号 联系咨询 →</button>
+</section>
+
+<nav class="chips" aria-label="卡点目录">
+  <div class="chips-inner" id="chips">
+    <a class="chip" href="#p1"><span class="n">01</span>在发作品，没在做内容</a>
+    <a class="chip" href="#p2"><span class="n">02</span>选品靠"我觉得"</a>
+    <a class="chip" href="#p3"><span class="n">03</span>流量来了接不住</a>
+    <a class="chip" href="#p4"><span class="n">04</span>用做号思维做带货</a>
+    <a class="chip" href="#p5"><span class="n">05</span>没人给你照镜子</a>
+  </div>
+</nav>
+
+<article>
+  <div class="intro reveal">
+    <p>你大概率经历过这种夜晚：打开后台，播放量不算难看，甚至偶尔还爆过一条，可成交那一栏，还是个位数，甚至是 0。你开始怀疑选品、怀疑镜头、怀疑自己是不是压根吃不了这碗饭。</p>
+    <p>停一下。<span class="mark">带货不出单，几乎从来不是"某一个点"的错，而是一条链路上某一环断了。</span>从"让人愿意看"，到"让人想买"，到"让人现在就下单"——你卡在哪一环，处方就开在哪一环。挨个对。</p>
+  </div>
+
+  <!-- 01 -->
+  <section class="point reveal" id="p1">
+    <span class="ghost">01</span>
+    <span class="tag">Symptom 01 · 勤奋的陷阱</span>
+    <h2>你一直在"发作品"，但没在"做内容"</h2>
+    <div class="body">
+      <span class="lbl sym">症状</span>
+      <p>日更、从不偷懒，每条都按时发。但内容要么是产品怼脸拍、要么是对着镜头念一段自己写的稿，发完就等爆。</p>
+      <span class="lbl root">病根</span>
+      <p>你把抖音当成了货架或朋友圈——"我把东西摆上去了，爱买不买"。可平台不是这么分的：<span class="mark">它先看有没有人愿意把你这条看完。</span>没人看完，完播率塌，流量就死死停在第一层小池子，后面一切免谈。勤快，用错了地方，就是自我感动。</p>
+      <span class="lbl fix">处方</span>
+      <p class="rx">发之前先问自己一句狠的：<b>这条凭什么让人看到第 3 秒？</b>前 3 秒是生死线，没有钩子（一个反常识、一个冲突、一个"说的就是我"），后面拍得再用心都是白费。先练"开头"，比先练"拍摄"值钱十倍。</p>
+    </div>
+    <button class="check" data-point="1"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span><span class="txt">这条我中了</span></button>
+  </section>
+
+  <!-- 02 -->
+  <section class="point reveal" id="p2">
+    <span class="ghost">02</span>
+    <span class="tag">Symptom 02 · 选品</span>
+    <h2>选品靠"我觉得好"，不是"数据说好"</h2>
+    <div class="body">
+      <span class="lbl sym">症状</span>
+      <p>囤了一堆自己真心觉得好的货；或者看见别人卖爆了就赶紧跟，结果跟进去已经是一片红海，连汤都喝不上。</p>
+      <span class="lbl root">病根</span>
+      <p>带货的本质是<b>需求匹配</b>，不是"我喜欢"。<span class="mark">你觉得好，和市场愿意掏钱，是两件事。</span>没看商品卡数据、没看同行此刻在跑什么、没用小流量测就 all in——这是在赌，不是在做生意。</p>
+      <span class="lbl fix">处方</span>
+      <p class="rx">选品先过三关：<b>佣金够不够、转化数据行不行、竞争挤不挤。</b>任何一关不及格，pass。看中的先拿小流量测，测得动再加码。把"我赌它能爆"换成"数据告诉我它能跑"。</p>
+    </div>
+    <button class="check" data-point="2"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span><span class="txt">这条我中了</span></button>
+  </section>
+
+  <!-- 03 -->
+  <section class="point reveal" id="p3">
+    <span class="ghost">03</span>
+    <span class="tag">Symptom 03 · 承接</span>
+    <h2>流量来了，但你的"承接"漏了</h2>
+    <div class="body">
+      <span class="lbl sym">症状</span>
+      <p>最扎心的一种：偶尔一条真爆了，播放几万甚至几十万，你激动地点开成交——个位数，甚至 0。热闹是别人的，单不是你的。</p>
+      <span class="lbl root">病根</span>
+      <p>视频只负责"勾起兴趣"，<span class="mark">真正让人掏钱的，是挂车那句话说没说明白、评论区有没有人接、商品本身的价格和详情接不接得住。</span>你爆的是"看热闹"，不是"购买欲"。流量从指缝漏走，往往漏在这一环。</p>
+      <span class="lbl fix">处方</span>
+      <p class="rx">视频里要给一个<b>"现在就买"的理由</b>——限时、解决某个具体痛点、和别的方案对比。评论区自己埋引导、埋答疑。爆一条不容易，别让它在最后一步白白漏掉。</p>
+    </div>
+    <button class="check" data-point="3"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span><span class="txt">这条我中了</span></button>
+  </section>
+
+  <!-- 04 -->
+  <section class="point reveal" id="p4">
+    <span class="ghost">04</span>
+    <span class="tag">Symptom 04 · 错位的 KPI</span>
+    <h2>你在用"做号"的思维，做"带货"</h2>
+    <div class="body">
+      <span class="lbl sym">症状</span>
+      <p>纠结涨粉、纠结人设够不够鲜明、纠结画面精不精美。粉丝确实涨了一点，可就是不出单，越做越迷茫。</p>
+      <span class="lbl root">病根</span>
+      <p>带货号的核心指标是<b>成交和转化</b>，不是粉丝数。<span class="mark">一万个看热闹的泛粉，不如一千个真会掏钱的精准粉。</span>精美画面不等于成交；把"这东西到底解决你什么问题"说清楚，才等于成交。你盯错了数字，就会使错力气。</p>
+      <span class="lbl fix">处方</span>
+      <p class="rx">把 KPI 从"涨粉 / 播放"<b>换成"成交 / 转化"</b>，然后反过来倒推内容：这条拍出来，是为成交服务的吗？不是，就重想。方向对了，慢也是快。</p>
+    </div>
+    <button class="check" data-point="4"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span><span class="txt">这条我中了</span></button>
+  </section>
+
+  <!-- 05 -->
+  <section class="point reveal" id="p5">
+    <span class="ghost">05</span>
+    <span class="tag">Symptom 05 · 最隐蔽的一环</span>
+    <h2>最致命的：没人给你"照镜子"</h2>
+    <div class="body">
+      <span class="lbl sym">症状</span>
+      <p>闷头做了好几个月，同样的坑反复踩，今天改标题、明天改封面、后天换选品，像没头苍蝇，<b>始终不知道问题到底卡在第 1 步还是第 4 步</b>。</p>
+      <span class="lbl root">病根</span>
+      <p>当局者迷。你每天盯着自己的号，早就看出盲区了；而你的卡点往往是"组合拳"里某一环，<span class="mark">自己排查的成本，高到你耗不起。</span>你缺的不是更努力，是一双站在外面、看得清全局的眼睛。</p>
+      <span class="lbl fix">处方</span>
+      <p class="rx">这正是"陪跑"存在的意义——有人帮你看数据、定位到底卡在哪、给出下一步的具体动作。<b>省下来的，是你自己瞎试的那几个月。</b>知道和做到之间，差的往往就是这一双眼睛。</p>
+    </div>
+    <button class="check" data-point="5"><span class="box"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span><span class="txt">这条我中了</span></button>
+  </section>
+</article>
+
+<!-- 自查结果动态条 -->
+<div class="tally reveal">
+  <div class="tally-card" id="tallyCard">
+    <div class="tally-num" id="tallyNum">0</div>
+    <div class="tally-txt" id="tallyTxt">边读边勾，看看你<b>中了几条</b>。中得越多，越说明这不是单点问题，而是该让人帮你把整套打法捋一遍了。</div>
+    <a class="tally-cta" href="https://fljytrain.cn/" id="tallyCta" style="display:none">看看怎么破 →</a>
   </div>
 </div>
 
-<!-- 正文博客内容区域 -->
-<main class="blog-wrap">
-  <article>
-    <div class="blog-header">
-      <div class="blog-date">发布时间：2026年07月28日</div>
-      <h1 class="blog-title">抖音短视频带货做了很久不出单，问题到底出在哪？</h1>
-    </div>
-    <div class="blog-content">
-      <p>身边太多上班族、宝妈、副业新手，自己摸索抖音短视频带货少则两三个月，多则大半年。每天抽空拍视频、剪片子、熬夜刷各类博主教程，耗费大量时间精力，结果播放量始终低迷，投随心推不断亏钱，从头到尾没有稳定出单，慢慢陷入自我怀疑和焦虑。</p>
-      <p>绝大多数人带货不出单，并不是自己不努力、没有天赋，而是全程踩中了抖音带货整套流程里的各类误区，环节断裂，自然无法完成从观看→下单的闭环。今天就盘点7个最普遍的核心卡点，对照一下你大概率中招了其中好几条。</p>
-
-      <h2>一、账号没有清晰定位，什么内容都想做</h2>
-      <p>新手最容易犯的第一个错误：没有固定赛道、固定人群，今天刷到美妆爆款就拍美妆，明天看到家居好物热销就跟风家居。抖音系统无法识别你的账号标签，不知道该把你的视频推送给哪一类精准用户。</p>
-      <p>泛流量观看再多，都没有购买意愿，自然不会产生订单。没有精准人群定位，是所有带货账号起步失败的根源。</p>
-
-      <h2>二、盲目跟风选品，只会抄爆款不会判断品好坏</h2>
-      <p>很多人选品逻辑极度简单：谁卖得火我就跟着卖什么。但热门爆款大多已经被无数博主瓜分流量，新手没有投放经验、没有粉丝基础，入局只能喝汤甚至亏本。</p>
-      <p>不懂核算产品佣金、保本ROI、受众匹配度，仅凭主观喜好选品，选十个品九个都跑不起来，白白浪费拍摄和投流资金。</p>
-
-      <h2>三、视频开头留不住人，完播率严重不达标</h2>
-      <p>抖音平台第一考核指标就是完播率，如果前3秒抓不住用户眼球，用户一划而过，视频直接被系统判定为低质量内容，不会继续推送流量。</p>
-      <p>自学的新手大多只会平铺直叙介绍产品，没有痛点直击、没有情绪钩子，视频全程平淡，完播数据拉胯，流量永远起不来。</p>
-
-      <h2>四、只会拍素材，不懂画面和文案的转化逻辑</h2>
-      <p>拍摄画面、镜头语言、产品展示顺序都是有目的性的：哪些画面用来建立信任，哪些细节激发购买欲望，哪些话术引导下单，全部都有标准框架。</p>
-      <p>普通人只是随手拍摄日常画面，把产品说明书念一遍，无法勾起用户消费需求，哪怕流量进来了，转化率也极低。</p>
-
-      <h2>五、随心推/千川投放全凭感觉，只会盲目烧钱</h2>
-      <p>冷启动、建模期、稳定放量期每个阶段投放预算、出价、人群设置都不一样。新手看不懂后台数据，不知道什么时候加预算、什么时候暂停计划，要么不敢投没流量，要么乱投持续亏损。</p>
-
-      <h2>六、不会复盘数据，出错了找不到问题根源</h2>
-      <p>播放低不知道是内容问题还是标签问题；转化差分不清是产品不合适还是文案话术问题；投流亏钱无法定位是素材还是出价问题。</p>
-      <p>看不懂后台各项流量指标，每次做错只能从头瞎试，反复踩同一个坑，永远无法迭代优化账号。</p>
-
-      <h2>七、独自坚持很难，心态崩溃容易半途而废</h2>
-      <p>一个人做账号没有监督、没有正向反馈，半个月看不到结果就会懈怠。今天想做带货，明天想尝试直播，后天又打算换赛道，定力不足，最终很难拿到正向结果。</p>
-
-      <div class="blog-conclusion">
-        <h2>总结：带货不出单，本质是流程断层</h2>
-        <p>抖音短视频带货是一套完整闭环：定位→选品→脚本创作→素材拍摄→付费投放→数据复盘，七个环节缺一不可。独自摸索很容易环节断裂，处处碰壁。</p>
-        <p>如果你反复尝试始终无法跑通整套带货体系，不妨了解峰岚佳韵90天2V1抖音短视频带货陪跑。全程一对一带着你走完完整流程，逐个打通卡点，帮新手避开绝大多数自学弯路，最终拥有独立运营带货账号的能力。</p>
-      </div>
-
-      <a href="../index.html" class="blog-back-home">← 返回官网首页 查看完整陪跑介绍</a>
-    </div>
-  </article>
-</main>
-
-<!-- 页脚 完全复用首页，包含合规温馨提示 -->
-<footer class="site-foot" data-theme="dark">
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <p class="foot-logo-row"><span class="foot-logo">90</span><span class="foot-name">天带货陪跑</span></p>
-        <p class="foot-tag">诚实比承诺更重要。</p>
-        <p class="foot-sub">抖音短视频带货 · 90 天一对一陪跑 · 每月仅 30 人</p>
-      </div>
-      <nav class="foot-nav" aria-label="页面导航">
-        <div class="foot-col">
-          <p class="foot-col-t">为什么来</p>
-          <a href="../index.html#pain">01 · 你的困境</a>
-          <a href="../index.html#skill">02 · 我的方案</a>
-          <a href="../index.html#diff">03 · 凭什么不同</a>
-          <a href="../index.html#why">04 · 我是谁</a>
-        </div>
-        <div class="foot-col">
-          <p class="foot-col-t">怎么走</p>
-          <a href="../index.html#fit">05 · 适合谁</a>
-          <a href="../index.html#nofit">06 · 不适合谁</a>
-          <a href="../index.html#roadmap">07 · 90 天流程</a>
-        </div>
-        <div class="foot-col">
-          <p class="foot-col-t">带什么走</p>
-          <a href="../index.html#manual">08 · 作战手册</a>
-          <a href="../index.html#faq">09 · 常见问题</a>
-          <a href="../index.html#cta">10 · 最后一站</a>
-        </div>
-      </nav>
-    </div>
-    <div class="foot-bot">
-      <p>© 2026 · 抖音带货陪跑 · 本页每一个字，都是大实话。</p>
-      <p class="foot-motto">不承诺暴富，只承诺清醒。</p>
-      <p style="font-size:12px;opacity:0.7;margin-top:12px;line-height:1.6;">
-温馨提示：本课程为线上知识服务，一经交付非质量问题不予退款；所有教学内容仅为实操思路分享，不保证收益，带货收益取决于个人执行能力。
-      </p>
-    </div>
+<!-- 文末 CTA -->
+<section class="cta reveal">
+  <div class="cta-card">
+    <span class="rx-tag">Next Step · 下一步</span>
+    <h3>自查完了，别停在"知道"。</h3>
+    <p>上面 5 条，看懂不难，难的是有人盯着你的数据、卡着你的节点、给你下一步的具体动作——然后陪你把它真的跑通。90 天 2V1 陪跑，干的就是这件事。</p>
+    <a class="go" href="https://fljytrain.cn/">看看 90 天陪跑怎么带你跑通 <span class="arr">→</span></a>
   </div>
+</section>
+
+<footer>
+  <span>© 峰岚佳韵 · 带货复盘笔记</span>
+  <a href="https://fljytrain.cn/">回到主页 / 了解陪跑 →</a>
 </footer>
 
-<!-- 回到顶部按钮 -->
-<button class="totop" id="toTop" type="button" aria-label="回到顶部">
-  <svg class="totop-ring" viewBox="0 0 52 52" aria-hidden="true">
-    <circle class="totop-track" cx="26" cy="26" r="22"></circle>
-    <circle class="totop-prog" cx="26" cy="26" r="22"></circle>
-  </svg>
-  <span class="totop-arr" aria-hidden="true">↑</span>
-</button>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-<!-- 全局交互JS -->
-<script src="../script.js"></script>
+  /* 阅读进度条 */
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* reveal + 高亮画线 */
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io2.unobserve(e.target);} });
+    }, {threshold:.6});
+    document.querySelectorAll('.mark').forEach(function(el){io2.observe(el);});
+  } else {
+    document.querySelectorAll('.reveal,.mark').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* scrollspy：当前卡点 chip 高亮 */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var map = {};
+  chips.forEach(function(c){ map[c.getAttribute('href').slice(1)] = c; });
+  if ('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          chips.forEach(function(c){c.classList.remove('active');});
+          var c = map[e.target.id]; if(c) c.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    document.querySelectorAll('.point').forEach(function(s){spy.observe(s);});
+  }
+
+  /* 对号入座 + 计数 + 动态文案 */
+  var KEY = 'fljy_tally_v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e){ state = {}; }
+
+  var numEl = document.getElementById('tallyNum');
+  var txtEl = document.getElementById('tallyTxt');
+  var ctaEl = document.getElementById('tallyCta');
+  var cardEl = document.getElementById('tallyCard');
+
+  var MSG = [
+    '边读边勾，看看你<b>中了几条</b>。中得越多，越说明这不是单点问题，而是该让人帮你把整套打法捋一遍了。',
+    '一条没中？别高兴太早——<b>你卡的可能更隐蔽</b>，藏在数据里，自己很难看见，恰恰最值得让人帮你看一眼。',
+    '中了 1–2 条，是好事：<b>把这两处调对，往往立刻有起色。</b>方向已经清楚了，差的是执行到位。',
+    '中了 3 条以上——<b>别自己硬扛了。</b>这已经不是某一个点的事，是整套打法需要有人陪你从头捋一遍、盯着跑通。'
+  ];
+  function bucket(n){ return n===0?1 : (n<=2?2 : 3); }
+
+  function render(animate){
+    var n = Object.keys(state).filter(function(k){return state[k];}).length;
+    numEl.textContent = n;
+    if(animate && !reduce){ numEl.classList.remove('bump'); void numEl.offsetWidth; numEl.classList.add('bump'); }
+    var b = bucket(n);
+    txtEl.innerHTML = MSG[b];
+    ctaEl.style.display = (n>=1) ? 'inline-flex' : 'none';
+    cardEl.classList.toggle('hot', n>=3);
+  }
+
+  document.querySelectorAll('.check').forEach(function(btn){
+    var id = btn.getAttribute('data-point');
+    if(state[id]){ btn.classList.add('on'); btn.querySelector('.txt').textContent = '已记一笔 · 我中了'; }
+    btn.addEventListener('click', function(){
+      var on = btn.classList.toggle('on');
+      state[id] = on;
+      btn.querySelector('.txt').textContent = on ? '已记一笔 · 我中了' : '这条我中了';
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+      render(true);
+    });
+  });
+  render(false);
+})();
+</script>
 </body>
 </html>
