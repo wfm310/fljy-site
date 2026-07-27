@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <script>
+(function(){
+var el = document.createElement("script");
+el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?caa2ae6c626daacee411cb8e3957a26a3ac97c10958d70d20d7df3fed50c33dfbc434964556b7d7129e9b750ed197d397efd7b0c6c715c1701396e1af40cec962b8d7c8c6655c9b00211740aa8a98e2e";
+el.id = "ttzz";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(el, s);
+})(window)
+</script>
+
+<meta property="bytedance:published_time" content="2026-07-01T10:00:00+08:00" />
+<meta property="bytedance:lrDate_time" content="2026-07-28T16:00:00+08:00" />
+<meta property="bytedance:updated_time" content="2026-07-28T16:00:00+08:00" />
+
   <link rel="canonical" href="https://www.fljytrain.cn/" />
   <meta name="bytedance-verification-code" content="dHmdlxs4tfPzZgdVgK3D" />
   <meta name="msvalidate.01" content="B22CA4D837A7EFBE70AE7896F3863DC6" />
-  <meta charset="UTF-8" />
+
   <!-- viewport-fit=cover：配合 iOS 刘海/圆角安全区 env(safe-area-inset-*) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- ══ 标签页标题 + 搜索摘要 ══════════════════════════════════
@@ -52,13 +69,24 @@
   <meta name="twitter:image" content="https://fljytrain.cn/og-cover.png" />
   <meta name="twitter:image:alt" content="峰岚佳韵 · 90 天抖音短视频带货 2V1 陪跑" />
 
-  <link rel="canonical" href="https://fljytrain.cn/" />
 
   <!-- 字体：Sora(拉丁标题) + Noto Sans SC(中文/正文) -->
-  <link rel="preconnect" href="https://fonts.loli.net" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.loli.net" crossorigin />
-  <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" media="print" onload="this.media='all'" />
+  <!-- ① 预热两种连接：CSS 走 no-cors，字体文件走 cors，缺一不可 -->
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://fonts.loli.net" crossorigin />
+
+<!-- ② 抢跑：提前下载字体 CSS，但先不应用 -->
+<link rel="preload" as="style"
+      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" />
+
+<!-- ③ 真正应用，仍不阻塞首屏 -->
+<link rel="stylesheet"
+      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet"
+      href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
+      
   <noscript><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Sora:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" /></noscript>
 
   <link rel="stylesheet" href="style.css" />
@@ -160,7 +188,7 @@
       <div class="hero-grid">
         <div class="hero-copy">
   <!-- 隐藏H1 仅SEO抓取使用，肉眼不可见 -->
-  <h1 style="position:absolute;opacity:0;width:1px;height:1px;overflow:hidden;">峰岚佳韵90天2V1抖音短视频带货陪跑，帮助独自摸索不出单的普通人跑通带货全流程</h1>
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">峰岚佳韵90天2V1抖音短视频带货陪跑，帮助独自摸索不出单的普通人跑通带货全流程</h1>
   <h2 class="hero-hello">Hello<span class="hello-bang">！</span></h2>
   <svg class="hello-wave" viewBox="0 0 240 26" fill="none" aria-hidden="true">
     <path class="wave-line" d="M6,14 C30,3 50,3 74,14 C98,25 118,25 142,14 C166,3 186,3 210,14"

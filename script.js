@@ -1,12 +1,48 @@
 /* ═══════════════════════════════════════════════════════════════════
-   script.js · 对齐终稿 · 整份替换（旧脚本直接删，不要追加）
-   对齐你的原生 CSS：
-   ─ 进度条用 width（不是 scaleX）
+   script.js · 性能对齐版 · 整份替换（旧脚本删净，不要追加）
+
+   本版相对上一份，只动了"动得不破坏任何东西"的两处，其余逻辑零改动。
+   刻意没动的，也在末尾注释里交代了"为什么看见却不动"——
+   知道哪里不该改，是这份脚本真正的护城河。
+
+   对齐你的原生 CSS 契约（一条都不能丢，丢了页面行为就变）：
+   ─ 进度条用 width（不是 scaleX：你的 CSS 是给 width 写的样式）
    ─ 导航肤色用 .nav.ghost / .nav.solid（不是 data-nav-theme）
-   ─ 章节跳动挂 .nav-chapter.tick（你的 chTick 动画）
+   ─ 章节跳动挂 .nav-chapter.tick（吃你的 chTick 动画）
    ─ 抽屉"正在读"用 a.active（你的 .dl-now 机制）
-   ─ 眨眼：检测到 CSS 已在动画就自动让位（你已有 blink/blinkOpen）
+   ─ 眨眼：CSS 已在动画就自动让位（你已有 blink/blinkOpen）
    ─ 滚动时喂 html.is-scrolling（你的滚动条显隐）
+
+   ★ 本次两处实质改动：
+   ① popChapter 去掉 `void offsetWidth` 的强制重排 → 改双 rAF 重触发动画
+      （这正是 Lighthouse「强制回流 365ms」点名的现行犯：写 class → 读
+        offsetWidth → 写 class，一次同步重排。双 rAF 让 remove 先提交、
+        下一帧再 add，动画照常重触发，却不再逼浏览器当场重排。）
+   ② 跑马灯 `innerHTML += innerHTML` → cloneNode 追加
+      （原写法把 DOM 序列化成字符串、拼接、再解析回 DOM，启动期白白
+        一次序列化+一次解析+一次重排；cloneNode 跳过序列化/解析，更快，
+        且不销毁原节点。注意：跑马灯内别放 id，否则副本会重复 id——
+        这点原写法也一样，不是本版引入的。）
+
+   刻意没动、且写清理由的（防止你或后人"优化"出回归）：
+   ─ measure() 启动跑三次（同步 / load / fonts.ready）：不是浪费。字体与
+     图片陆续改变各 section 高度，必须各重测一次区间；合并成一次会出
+     "字体到了但导航区间没更新"的 bug。函数体纯读、不写，故只触发一次
+     重排，已是最优，别动。
+   ─ updateNav 每帧写 progressBar.style.width：滚动时进度条本就该每帧动，
+     不滚动 onScroll 不触发、一字节不写——没有"空转写入"的泄漏。改 scaleX
+     能上 GPU，但违反你的 width 契约、会破视觉，不动。
+   ─ $all('.rv,.reveal') 全页扫描、各模块 $('#id') 查询：by-id 走浏览器索引、
+     observe 只是登记，成本可忽略；强行缓存/合并只会把代码弄丑，不动。
+   ─ pv / sys 的 setInterval 计数：写单个文本节点的重排极轻，且进视口才启动，
+     不是 TBT 长任务的贡献者；改 rAF 徒增复杂度与回归风险，不动。
+   ─ 尾部三个独立 IIFE：合并进主函数只省几次 querySelector（微乎其微），
+     却易引入变量名冲突；保留独立作用域更稳，不动。
+
+   还有一句话，比上面都重要：
+   这份 js 砍完，TBT 不会变绿。因为绿的那部分钥匙不在 js——
+   归因 index.html 的 1000ms+ 是内联 SVG / 文档解析，归因 CSS 的持续掉帧
+   是 58 个非合成动画。js 这块，到此为止，干净了。
    ═══════════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -19,6 +55,14 @@
   function $(s, c) { return (c || doc).querySelector(s); }
   function $all(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
   function clamp01(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
+
+  /* ★ 跑马灯无缝循环：克隆子节点追加，替代 innerHTML 字符串拼接，
+        省掉启动期一次序列化 + 一次解析 + 一次重排。跑马灯内勿放 id。 */
+  function dupChildren(el) {
+    if (!el) return;
+    var src = el.cloneNode(true);
+    while (src.firstChild) el.appendChild(src.firstChild);
+  }
 
   /* ── 01 · 席位同步 ── */
   $all('.seats').forEach(function (el) { el.textContent = SEATS; });
@@ -158,10 +202,13 @@
   }
 
   var drawerLinks = $all('.nav-drawer-list a[data-target]');
-  
+
 
   var M = { navH: 68, vh: 800, docH: 1, chapTops: [], themeTops: [] };
 
+  /* measure：纯读、不写 → 浏览器只重排一次后缓存，已是最优，别往里塞写操作。
+     启动期被调用三次（同步 / load / fonts.ready）是刻意的：字体与图片陆续
+     改变各 section 高度，区间必须各重测一次，合并会出 bug。 */
   function measure() {
     var y = win.pageYOffset || doc.documentElement.scrollTop;
     M.vh = win.innerHeight;
@@ -176,17 +223,19 @@
       else { var r = t.el.getBoundingClientRect(); top = r.top + y; h = r.height; }
       return { t: t, top: top, bottom: top + h };
     }).sort(function (a, b) { return a.top - b.top; });
-
   }
 
   var lastChapId = null, lastDark = null;
 
-  /* 换章时轻跳：tick 挂在 .nav-chapter 上，吃你的 chTick 动画 */
+  /* ★ 换章轻跳：双 rAF 重触发 chTick，不再用 `void offsetWidth` 逼浏览器
+        同步重排（那是 Lighthouse「强制回流」点名的写-读-写现行犯）。
+        第一帧提交 remove 后的"无动画"状态，第二帧 add 让动画从头跑。 */
   function popChapter() {
     if (!chapBtn || reduce) return;
     chapBtn.classList.remove('tick');
-    void chapBtn.offsetWidth; /* 重排一下，让跳动可以重复触发 */
-    chapBtn.classList.add('tick');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { chapBtn.classList.add('tick'); });
+    });
   }
 
   function updateNav(y) {
@@ -344,9 +393,8 @@
     }
   }
 
-  /* ── 10 · 模块01：跑马灯内容复制一份，实现无缝循环 ── */
-  var tapeTrack = $('#tapeTrack');
-  if (tapeTrack) tapeTrack.innerHTML += tapeTrack.innerHTML;
+  /* ── 10 · 模块01：跑马灯内容复制一份，实现无缝循环（★ 改 cloneNode） ── */
+  dupChildren($('#tapeTrack'));
 
   /* ── 11 · 模块02：系统完整度计数 0→7 ── */
   var sys = $('#sys'), sysBox = $('#sysBox');
@@ -366,9 +414,8 @@
     }
   }
 
-  /* ── 12 · 模块02：闭环跑马灯复制一份，实现无缝循环 ── */
-  var loopTrack = $('#loopTrack');
-  if (loopTrack) loopTrack.innerHTML += loopTrack.innerHTML;
+  /* ── 12 · 模块02：闭环跑马灯复制一份，实现无缝循环（★ 改 cloneNode） ── */
+  dupChildren($('#loopTrack'));
 
 })();
 
