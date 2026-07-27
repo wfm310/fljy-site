@@ -1,0 +1,10 @@
+# 允许所有搜索引擎抓取全站内容
+User-agent: *
+Allow: /
+
+# 禁止抓取样式、脚本文件（无需爬虫读取，节省抓取额度）
+Disallow: /style.css
+Disallow: /script.js
+
+# 告知爬虫站点地图位置
+Sitemap: https://fljytrain.cn/sitemap.xml
