@@ -1,20 +1,21 @@
 {
-  "name": "峰岚佳韵 · 抖音短视频带货 2V1 陪跑",
+  "name": "峰岚佳韵 - 抖音短视频带货 2v1 陪跑",
   "short_name": "峰岚佳韵",
-  "description": "90 天 2V1 专属陪跑，两个人盯你一个人，跑通带货从0-1全流程。",
+  "description": "90 天 2v1 专属陪跑，两个人盯你一个人，跑通带货从0-1全流程。",
   "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#FF6B35",
+  "background_color": "#F6B35",
   "theme_color": "#FF6B35",
   "lang": "zh-CN",
   "dir": "ltr",
   "categories": ["education", "business"],
   "icons": [
-  { "src": "favicon.svg",        "sizes": "any",     "type": "image/svg+xml", "purpose": "any" },
-  { "src": "icon-192.png",       "sizes": "192x192", "type": "image/png",     "purpose": "any" },
-  { "src": "icon-512.png",       "sizes": "512x512", "type": "image/png",     "purpose": "any" },
-  { "src": "icon-192-m.png",     "sizes": "192x192", "type": "image/png",     "purpose": "maskable" },
-  { "src": "icon-512-m.png",     "sizes": "512x512", "type": "image/png",     "purpose": "maskable" }
-]
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-192-m.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-512-m.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
