@@ -1,0 +1,21 @@
+{
+  "rewrites": [
+    {
+      "source": "/docs/:path*",
+      "destination": "/:path*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fljytrain.cn"
+        }
+      ],
+      "destination": "https://www.fljytrain.cn/$1",
+      "permanent": true
+    }
+  ]
+}
